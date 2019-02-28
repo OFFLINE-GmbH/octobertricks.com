@@ -29,7 +29,7 @@ limit = 5
         </h2>
         <div class="trick-of-the-day">
             <h3 class="trick-of-the-day__heading">
-                <a href="{{ 'trick' | page({slug: 'abc'}) }}">
+                <a href="{{ 'trick' | page({slug: trick.slug}) }}">
                     {{ trickDetail.trick.title }}
                     <span class="trick-votes trick-votes--big">
                         {{ trickDetail.trick.votes }}
@@ -40,11 +40,6 @@ limit = 5
                 by {{ trick.author.username }}
             </div>
             {% partial 'trickDetail/tags' tags=trickDetail.trick.tags %}
-            <p class="trick-of-the-day__text">
-                <a href="{{ 'trick' | page({slug: trick.slug}) }}">
-                    {{ trickDetail.trick.excerpt }}
-                </a>
-            </p>
         </div>
 
     </div>
