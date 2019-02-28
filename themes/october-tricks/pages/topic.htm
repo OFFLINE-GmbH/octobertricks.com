@@ -29,9 +29,9 @@ function onEnd() {
             {{ count == 1 ? 'Trick' : 'Tricks' }}
         </div>
         {% if trickList.tricks.count() > 0 %}
-            <div class="small-tricks small-tricks--two-columns">
+            <div class="medium-trick-list">
                 {% for trick in trickList.tricks %}
-                    {% partial 'small-trick' trick=trick %}
+                    {% partial 'medium-trick' trick=trick %}
                 {% endfor %}
             </div>
             {% if trickList.tricks.hasPages %}
