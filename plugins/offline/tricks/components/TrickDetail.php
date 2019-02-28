@@ -80,12 +80,14 @@ class TrickDetail extends ComponentBase
             return ! $this->property('trick_of_the_day') ? $this->controller->run('404') : null;
         }
 
-        $this->trick->increment('pageviews');
+        if ( ! $this->property('trick_of_the_day')) {
+            $this->trick->increment('pageviews');
 
-        $this->topics = Topic::orderBy('sort_order')->get();
+            $this->topics = Topic::orderBy('sort_order')->get();
 
-        $this->page->title            = $this->trick->title;
-        $this->page->meta_description = $this->trick->excerpt;
+            $this->page->title            = $this->trick->title;
+            $this->page->meta_description = $this->trick->excerpt;
+        }
     }
 
     public function onComment()
