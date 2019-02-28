@@ -16,6 +16,7 @@ composer.phar
 themes/**/assets/*.js
 themes/**/assets/*.css
 themes/**/assets/*.map
+!themes/**/assets/tagify*
 themes/**/node_modules
 !plugins
 
