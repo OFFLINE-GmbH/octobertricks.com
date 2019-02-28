@@ -17,6 +17,8 @@ themes/**/assets/*.js
 themes/**/assets/*.css
 themes/**/assets/*.map
 !themes/**/assets/tagify*
+!themes/**/assets/highlight.js
+!themes/**/assets/hljs.github-gist.css
 themes/**/node_modules
 !plugins
 
