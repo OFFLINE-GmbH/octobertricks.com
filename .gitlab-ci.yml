@@ -42,6 +42,7 @@ deploy:
         - eval $(ssh-agent -s)
         - echo "$SSH_DEPLOY_KEY" > /tmp/id_rsa && chmod 400 /tmp/id_rsa && ssh-add /tmp/id_rsa && mkdir -p ~/.ssh
         - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+        - echo server is $SERVER
         - |
             envoy run deploy \
                 --author="$GITLAB_USER_LOGIN" \
