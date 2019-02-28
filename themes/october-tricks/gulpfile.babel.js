@@ -13,6 +13,7 @@ const cssWhitelist = [
     'nav-visible',
     'gdpr-banner-host--visible',
     'gdpr-banner-host--out',
+    'hljs',
 ]
 // =====================================================================
 import gulp from 'gulp'
