@@ -1,0 +1,16 @@
+fields:
+    content:
+        label: Content
+        size: huge
+        mode: tab
+        span: left
+        type: markdown
+    votes:
+        label: Votes
+        span: right
+        type: number
+    user:
+        label: User
+        span: right
+        type: relation
+        select: email

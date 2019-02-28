@@ -1,0 +1,28 @@
+<div class="comment-form comment-form--hidden">
+    <form data-request="onComment" data-request-validate="">
+        <input type="hidden" name="id" value="{{ id }}">
+        <input type="hidden" name="parent_id" value="{{ parent }}">
+        <input type="hidden" name="_hp" value="">
+        <div class="form-group">
+            <label for="content">Your comment</label>
+            <textarea class="form-control form-control--markdown message--{{ id }}"
+                      name="content"
+                      id="message"
+                      rows="6"
+            >{{ content }}</textarea>
+            <div data-validate-for="content"></div>
+        </div>
+        <div class="form-actions">
+            <div>
+                <button class="btn btn--primary btn--small" type="submit">Comment</button>
+            </div>
+            <div>
+                <a href="javascript:;"
+                   onclick="$(this).closest('.comment-form').remove();"
+                   class="btn btn--small btn--ghost">
+                    Cancel
+                </a>
+            </div>
+        </div>
+    </form>
+</div>

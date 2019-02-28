@@ -1,0 +1,12 @@
+<div class="voter {{ voted ? ('voter--voted-' ~ voted) }}"
+     data-topic="{{ topic }}"
+     data-id="{{ id }}"
+     data-base="{{ base }}">
+    <button class="voter__arrow voter__arrow--up {{ voted ? 'voter__arrow--active' }}">
+        {{ svg( 'assets/voter.svg') }}
+    </button>
+    <div class="voter__votes">{{ base }}</div>
+    <button class="voter__arrow voter__arrow--down {{ voted ? 'voter__arrow--active' }}">
+        {{ svg( 'assets/voter.svg') }}
+    </button>
+</div>

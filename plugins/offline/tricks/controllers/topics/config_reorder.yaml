@@ -1,0 +1,5 @@
+title: Topics
+modelClass: OFFLINE\Tricks\Models\Topic
+nameFrom: name
+toolbar:
+    buttons: reorder_toolbar

@@ -1,0 +1,50 @@
+plugin:
+    name: 'offline.tricks::lang.plugin.name'
+    description: 'offline.tricks::lang.plugin.description'
+    author: OFFLINE
+    icon: oc-icon-magic
+    homepage: 'https://www.octobertricks.com'
+permissions:
+    'offline.tricks::manage_tricks':
+        tab: 'offline.tricks::lang.plugin.name'
+        label: 'Manage tricks'
+    'offline.tricks::manage_topics':
+        tab: 'offline.tricks::lang.plugin.name'
+        label: 'Manage topics'
+    'offline.tricks::manage_tags':
+        tab: 'offline.tricks::lang.plugin.name'
+        label: 'Manage tags'
+    'offline.tricks::manage_comments':
+        tab: 'offline.tricks::lang.plugin.name'
+        label: 'Manage comments'
+navigation:
+    tricks-main:
+        label: 'offline.tricks::lang.plugin.name'
+        url: offline/tricks/tricks
+        icon: icon-magic
+        permissions: {  }
+        sideMenu:
+            tricks-tricks:
+                label: 'offline.tricks::lang.plugin.name'
+                url: offline/tricks/tricks
+                icon: icon-file
+                permissions:
+                    - 'offline.tricks::manage_tricks'
+            tricks-comments:
+                label: Comments
+                url: offline/tricks/comments
+                icon: icon-comment-o
+                permissions:
+                    - 'offline.tricks::manage_comments'
+            tricks-topics:
+                label: Topics
+                url: offline/tricks/topics
+                icon: icon-sitemap
+                permissions:
+                    - 'offline.tricks::manage_topics'
+            tricks-tags:
+                label: Tags
+                url: offline/tricks/tags
+                icon: icon-tags
+                permissions:
+                    - 'offline.tricks::manage_tags'

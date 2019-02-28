@@ -1,0 +1,11 @@
+name: Topic
+modelClass: OFFLINE\Tricks\Models\Topic
+form: $/offline/tricks/models/topic/fields.yaml
+defaultRedirect: offline/tricks/topics
+create:
+    redirect: 'offline/tricks/topics/update/:id'
+    redirectClose: offline/tricks/topics
+update:
+    redirect: offline/tricks/topics
+    redirectClose: offline/tricks/topics
+preview: {  }

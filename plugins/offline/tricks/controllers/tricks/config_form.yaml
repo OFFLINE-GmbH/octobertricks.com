@@ -1,0 +1,10 @@
+name: Trick
+modelClass: OFFLINE\Tricks\Models\Trick
+form: $/offline/tricks/models/trick/fields.yaml
+defaultRedirect: offline/tricks/tricks
+create:
+    redirect: 'offline/tricks/tricks/update/:id'
+    redirectClose: offline/tricks/tricks
+update:
+    redirect: offline/tricks/tricks
+    redirectClose: offline/tricks/tricks

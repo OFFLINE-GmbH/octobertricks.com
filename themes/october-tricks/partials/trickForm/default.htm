@@ -1,0 +1,105 @@
+{% set trick = __SELF__.trick %}
+<div id="form">
+    <form data-request="onSubmit" data-request-validate>
+        <div class="form-group">
+            <label for="title">Title</label>
+            <div class="form-comment">Give your trick a describing title. Do <em>not</em> start with «How to...».</div>
+            <input type="text" id="title" name="title" class="form-control" value="{{ trick.title }}">
+            <div data-validate-for="title"></div>
+        </div>
+        <div class="form-group">
+            <label for="content">Your trick</label>
+            <div class="form-comment">Keep it short and concise! Markdown is supported.</div>
+            <textarea id="content"
+                      name="content"
+                      class="form-control form-control--markdown"
+                      rows="10"
+            >{{ trick.content }}</textarea>
+            <div data-validate-for="content"></div>
+        </div>
+        <div class="form-group">
+            <label>Topics</label>
+            <div class="form-comment">If your trick fits more than one topic select multiple. Select at least one.</div>
+            <div class="two columns">
+                {% for topic in __SELF__.topics %}
+                    <label for="topic-{{ topic.id }}" class="form-control-checkbox column">
+                        <input id="topic-{{ topic.id }}"
+                               type="checkbox"
+                               name="topics[]"
+                               value="{{ topic.id }}"
+                                {{ trick.topics.contains(topic.id) ? 'checked' }}
+                        >
+                        {{ topic.name }}
+                    </label>
+                {% endfor %}
+            </div>
+            <div data-validate-for="topics"></div>
+        </div>
+        <div class="form-group">
+            <label for="tagify">Tags</label>
+            <div class="form-comment">You can use existing tags or create new ones. Add at least one.</div>
+            <input id="tagify" type="text" class="form-control" value="{{ trick.tags.pluck('name').implode(',') }}">
+            <div data-validate-for="tags"></div>
+            <div id="tags"></div>
+        </div>
+        <div class="form-actions">
+            <div>
+                <button class="btn btn--primary" type="submit">
+                    {% if trick and not __SELF__.isProposal %}
+                        Save changes
+                    {% else %}
+                        Submit for review
+                    {% endif %}
+                </button>
+            </div>
+            <div>
+                <a class="btn btn--ghost"
+                   href="{{ 'account-tricks' | page }}">
+                    Cancel
+                </a>
+            </div>
+        </div>
+    </form>
+</div>
+{% put scripts %}
+    <script src="{{ 'assets/tagify.min.js' | theme }}"></script>
+    <script>
+        $(function () {
+            var input = document.querySelector('#tagify');
+            var tagsWrapper = document.querySelector('#tags');
+            new Tagify(input, {
+                whitelist: {{ __SELF__.tagChoices | raw }},
+                dropdown: {
+                    enabled: 2,
+                    maxItems: 5
+                },
+                callbacks: {
+                    add: renderTagsInputs,
+                    remove: renderTagsInputs,
+                }
+            });
+
+            function renderTagsInputs () {
+                if (! input.value) {
+                    return
+                }
+
+                var tags = JSON.parse(input.value)
+                tagsWrapper.innerHTML = ''
+
+                for (var i = 0; i < tags.length; i ++) {
+                    $('<input>')
+                        .prop('name', 'tags[]')
+                        .prop('type', 'hidden')
+                        .prop('value', tags[i].value)
+                        .appendTo(tagsWrapper)
+                }
+            }
+
+            renderTagsInputs()
+        })
+    </script>
+{% endput %}
+    {% put styles %}
+        <link rel="stylesheet" href="{{ 'assets/tagify.css' | theme }}">
+    {% endput %}

@@ -1,0 +1,36 @@
+description = "Default"
+
+[session]
+
+[cookieBanner]
+include_css = 0
+update_partial = "gdpr"
+update_selector = "#gdpr-reload"
+cookie_manager_page = "cookies"
+==
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% partial 'meta' %}
+</head>
+<body>
+
+{% partial 'skiplinks' %}
+{% partial 'header' %}
+
+<div class="site-wrapper">
+    <main class="main">
+        <a id="content" class="skiplink-anchor" aria-hidden="true"></a>
+        <div class="wrapper">
+            <div class="row">
+                {% page %}
+            </div>
+        </div>
+    </main>
+</div>
+
+{% partial 'footer' %}
+{% partial 'scripts' %}
+{% partial 'cookieBanner' %}
+</body>
+</html>

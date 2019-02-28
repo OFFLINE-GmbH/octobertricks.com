@@ -1,0 +1,47 @@
+.searchbox
+    @extends $box
+    padding 1rem
+    width 75rem
+    max-width 100%
+    margin 0 auto
+    display flex
+    justify-content space-between
+    margin-bottom -5.5rem
+    +below(500px)
+        flex-direction column
+
+    &__form
+        flex 1 1 auto
+
+    &__input
+        display block
+        background #fff
+        border 1px solid grey-light
+        box-shadow inset 0 2px 2px rgba(0, 0, 0, 0.1)
+        border-radius 2px
+        font-size 2.2rem
+        padding 1.3rem 1.5rem 1rem
+        width 100%
+        color black
+        transition border .2s ease
+        &:focus
+            outline none
+            border-color primary
+
+    &__action
+        margin-left 1rem
+        +below(500px)
+            flex 1 0 auto
+            margin-top 1rem
+            margin-left 0
+
+
+    &__button
+        @extends .btn--primary
+        font-size 2.2rem
+        font-weight 500
+        padding .6em 2.6em .55em
+        line-height 1
+        +below(500px)
+            width 100%
+

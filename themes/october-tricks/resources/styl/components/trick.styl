@@ -1,0 +1,208 @@
+voter-width = 8rem
+
+.trick
+    position relative
+
+    &__header
+        margin-bottom 2rem
+        padding-bottom 2rem
+        border-bottom 1px solid grey-lightest
+
+    &__votes
+        flex 0 0 voter-width
+
+        .voter__votes
+            @extends .trick-votes
+            font-size 1.4rem
+            padding .7rem .8rem
+            position relative
+            display block
+            left 0
+            top -.1rem
+            margin 1rem 0
+
+    &__title
+        flex 1 1 auto
+        font-size 2.8rem
+        color black
+        margin 0
+        line-height 1.3
+        padding-right 5rem
+
+    &__meta
+        color grey-light
+        font-size 1.6rem
+        margin-top .6rem
+        margin-bottom 1.1rem
+
+    &__content
+        line-height 1.5
+        color grey-darkest
+        overflow-y auto
+
+        h2
+            color black
+            margin-bottom 1rem
+
+            &:not(:first-child)
+                margin-top 4rem
+
+        h3
+            color black
+            margin-bottom 1rem
+
+            &:not(:first-child)
+                margin-top 2rem
+
+        p:not(:last-child)
+            margin-bottom 1rem
+
+    &__actions
+        border-top 1px solid grey-lightest
+        padding-top 2rem
+        font-size 1.4rem
+        text-align right
+
+    &__action
+        color grey-light
+
+        &:hover
+            color primary
+
+    +below('xs')
+        .voter
+            top 0
+
+
+.small-tricks
+    &--two-columns
+        lost-flex-container row
+        align-items top
+
+        .small-trick
+            lost-column 1 / 2 2 6rem
+            +below('m')
+                lost-column 1 / 1
+
+            &:not(:last-child)
+                margin-bottom 4rem
+
+.small-trick
+    display block
+    color inherit
+
+    &:not(:last-child)
+        margin-bottom 2rem
+
+    &__title
+        font-size 1.6rem
+        font-weight 500
+        margin-bottom .5rem
+        display block
+        color black
+        transition .2s ease color
+        position relative
+        padding-right 3rem
+
+        &:hover
+            color primary
+
+    &__subtitle
+        font-size 1.3rem
+        margin-bottom 1rem
+        display block
+        color grey
+
+
+.trick-of-the-day
+    margin-top 2rem
+
+    &__heading
+        margin-bottom .5rem
+        line-height 1.3
+        position relative
+        padding-right 4rem
+
+        a
+            color black
+            transition .2s ease color
+
+            &:hover
+                color primary
+
+    &__meta
+        color grey
+        margin-bottom 1rem
+
+    &__text
+        margin-bottom 2rem
+        margin-top 2rem
+        line-height 1.5
+        color grey-darkest
+
+        a
+            color inherit
+
+
+.medium-trick-list
+    border-bottom 1px solid grey-lightest
+    padding-bottom 2rem
+
+    + .pagination
+        margin-top 3rem
+
+.medium-trick
+    position relative
+    display flex
+    align-items center
+    border-top 1px solid grey-lightest
+    padding-top 2rem
+
+    + .medium-trick
+        margin-top 2rem
+
+    &__title
+        font-size 1.8rem
+        margin-bottom 1rem
+        display block
+        white-space nowrap
+        text-overflow ellipsis
+        overflow hidden
+        color black
+
+    &__body
+        flex 1 1 auto
+        padding-right 2rem
+
+    &__author
+        margin-top -1rem
+        margin-bottom 1rem
+
+    &__actions
+        flex 0 0 8rem
+        margin-left 3rem
+        display flex
+        flex-direction column
+
+    &__action
+        width 100%
+
+        + .medium-trick__action
+            margin-top 1rem
+
+    &__stats
+        +below(800px)
+            flex 1 0 5rem
+
+    &__meta
+        font-size 1.4rem
+        color grey
+        display flex
+        align-items center
+        justify-content flex-start
+
+        &--green
+            color green-dark
+
+        .dot
+            margin-right 1rem

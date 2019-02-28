@@ -1,0 +1,125 @@
+.gdpr-banner-host
+    position fixed
+    width 380px
+    perspective 2000px
+    right 2rem
+    bottom 2rem
+    z-index 12000
+    pointer-events none
+    +below('s')
+        right 0
+        bottom 0
+        width 100%
+
+    &--visible
+        pointer-events initial
+
+.gdpr-banner
+    background #fff
+    box-shadow 0 8px 15px rgba(3, 27, 78, .1)
+    padding 2.5rem 2.5rem 2rem
+    border-radius 5px
+    font-size 1.3rem
+    border 1px solid grey-light
+    transform rotateX(-30deg) translate3d(0, 30px, 0)
+    pointer-events none
+    opacity 0
+    will-change transform, opacity
+    transition-duration .25s
+    +below('s')
+        border-radius 0
+        box-shadow 0 4px 15px rgba(3, 27, 78, .1)
+        padding 2rem
+        transform translate3d(0, 30px, 0)
+        border-right none
+        border-left none
+        border-bottom none
+
+    .gdpr-banner-host--visible &
+        transform translate3d(0, 0, 0)
+        opacity 1
+        pointer-events initial
+
+    .gdpr-banner-host--out &
+        transform rotateX(30deg) translate3d(0, -30px, 0)
+        opacity 0
+        pointer-events initial
+        +below('s')
+            transform translate3d(0, 30px, 0)
+
+    &__message
+        margin-bottom 2rem
+
+    &__actions
+        display flex
+        align-items center
+        justify-content space-between
+
+        .btn
+            padding .7em 2em
+            text-transform none
+
+    &__buttons
+        display flex
+        flex 1
+
+    &__settings
+        justify-self flex-end
+
+    .gdpr-banner__button--opt-out
+        color grey-darker
+        margin-left 1rem
+        background transparent
+        border 1px solid transparent
+
+        &:hover
+            box-shadow none
+            border-color grey-light
+
+    .gdpr-banner__button--settings
+        margin 0
+        display flex
+        justify-content center
+        align-items center
+
+        svg
+            transform rotate(0deg)
+
+        &:hover svg
+            animation spinner-delayed 2s infinite
+
+.gdpr-cookie-manager
+    .gdpr-cookie-manager__cookie-description
+        font-size 1.4rem
+
+    .gdpr-cookie-manager__group-list-description
+        font-size 1.2rem
+
+    .gdpr-cookie-manager__submit-button
+        padding 1rem
+
+    h3
+        border none
+        font-family Arial, sans-serif
+        font-size 1.5rem
+        margin 0
+        font-style normal
+
+@keyframes spinner-delayed
+    50%, 100%
+        transform rotate(360deg)
+
+ul.gdpr-cookie-manager__group-list
+    margin 0
+    padding 0
+    list-style none
+
+    li
+        margin 0
+        padding 0
+
+select.gdpr-cookie-manager__consent_expiry
+    font-size 1.2rem
+    padding 1rem
+    background transparent
+    max-width 100%

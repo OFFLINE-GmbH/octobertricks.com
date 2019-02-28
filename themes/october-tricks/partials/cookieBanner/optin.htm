@@ -1,0 +1,14 @@
+<div class="gdpr-banner__opt-in">
+    <button role="button" 
+            tabindex="0" 
+            aria-pressed="false"
+            class="btn btn--primary"
+            onclick="$('.gdpr-banner-host').addClass('gdpr-banner-host--out');"
+            data-request="onAccept"
+            data-request-success="{{ __SELF__.hardReload ? 'document.location.reload()' }}"
+            {% if not __SELF__.hardReload %}
+                data-request-update="'{{ __SELF__.updatePartial }}' : '{{ __SELF__.updateSelector }}'"
+            {% endif %}>
+        {{ 'offline.gdpr::lang.cookie_banner.accept' | trans }}
+    </button>
+</div>

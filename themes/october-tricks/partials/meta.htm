@@ -1,0 +1,51 @@
+{% set company_name    = 'October CMS Tricks' %}
+{% set homepage_title  = 'October Tricks · October CMS resources and help articles' %}
+{% set theme_color     = '#f35627' %}
+{% set theme_css_files = [
+    'assets/main.css',
+] %}
+{% set theme_js_files = [
+    'assets/app.js',
+] %}
+
+{% if this.environment == 'dev' %}
+    <meta name="robots" content="noindex">
+{% endif %}
+
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="theme-color" content="{{ theme_color }}">
+<meta name="description" content="{{ this.page.meta_description }}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="icon" type="image/png" href="{{ 'assets/favicon-16x16.png'|theme }}" sizes="16x16">
+<link rel="icon" type="image/png" href="{{ 'assets/favicon-32x32.png'|theme }}" sizes="32x32">
+<link rel="icon" type="image/png" href="{{ 'assets/favicon-96x96.png'|theme }}" sizes="96x96">
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
+
+{% set title = this.page.meta_title|default(this.page.title) ~ ' · ' ~ company_name %}
+
+{# Titel für Startseite überschreiben #}
+{% set title = this.page.url == '/' ? homepage_title : title %}
+
+<title>{{ title }}</title>
+
+{% if this.environment == 'dev' %}
+    {% for asset in theme_css_files %}
+        <link href="{{ asset | theme }}" rel="stylesheet">
+    {% endfor %}
+{% else %}
+    <link href="{{ theme_css_files | theme }}" rel="stylesheet">
+{% endif %}
+
+{% if this.environment == 'dev' %}
+    {% for asset in theme_js_files %}
+        <script src="{{ asset | theme }}" async></script>
+    {% endfor %}
+{% else %}
+    <script src="{{ theme_js_files | theme }}" async></script>
+{% endif %}
+
+{% styles %}
+{% placeholder meta %}

@@ -1,0 +1,30 @@
+<div class="trick">
+    <header class="trick__header">
+        <div class="trick__heading">
+            <h1 class="trick__title">
+                {{ trick.title }}
+            </h1>
+            <div class="trick__votes">
+                {% if __SELF__.userVote %}
+                    {% set voted = __SELF__.userVote.value == 1 ? 'up' : 'down' %}
+                {% endif %}
+                {% partial 'voter' topic="trick" id=trick.id base=trick.votes voted=voted %}
+            </div>
+        </div>
+        <div class="trick__meta">
+            Updated on {{ trick.updated_at.format('F jS, Y') }}
+        </div>
+        <div class="trick__tags">
+            {% partial __SELF__ ~ '::tags' tags=trick.tags %}
+        </div>
+    </header>
+    <section class="trick__content">
+        {{ trick.clean_content | raw }}
+    </section>
+    <div class="trick__actions">
+        <a href="{{ 'trick-form' | page({slug: trick.slug}) }}"
+           class="trick__action">
+            Propose changes to this trick
+        </a>
+    </div>
+</div>

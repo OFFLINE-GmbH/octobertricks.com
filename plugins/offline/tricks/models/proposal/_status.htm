@@ -1,0 +1,15 @@
+<?php
+if ($value === \OFFLINE\Tricks\Models\Proposal::STATUS_PENDING):
+?>
+<span class="oc-icon-circle text-info">
+    Pending
+</span>
+<?php elseif ($value === \OFFLINE\Tricks\Models\Proposal::STATUS_DECLINED): ?>
+<span class="oc-icon-circle text-muted">
+    Declined
+</span>
+<?php else: ?>
+<span class="oc-icon-circle text-success">
+    Accepted
+</span>
+<?php endif; ?>

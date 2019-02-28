@@ -1,0 +1,14 @@
+{% if not hideSearchbox %}
+    <form action="{{ 'search' | page }}" method="get" class="searchbox">
+        <div class="searchbox__form">
+            <input class="searchbox__input"
+                   type="text"
+                   value="{{ q }}"
+                   name="q"
+                   placeholder="What are you looking for?">
+        </div>
+        <div class="searchbox__action">
+            <button class="btn btn--primary searchbox__button" type="submit">Search</button>
+        </div>
+    </form>
+{% endif %}

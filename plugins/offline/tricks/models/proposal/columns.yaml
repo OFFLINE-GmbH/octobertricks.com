@@ -1,0 +1,42 @@
+columns:
+    status:
+        label: Status
+        type: partial
+        path: $/offline/tricks/models/proposal/_status.htm
+        sortable: true
+    title:
+        label: Title
+        type: text
+        searchable: true
+        sortable: true
+    content:
+        label: Content
+        type: text
+        searchable: true
+        invisible: true
+    user_id:
+        label: User
+        type: number
+        sortable: true
+        select: email
+        relation: author
+    slug:
+        label: Slug
+        type: text
+        searchable: true
+        invisible: true
+        sortable: true
+    references:
+        label: References
+        type: text
+        searchable: true
+        invisible: true
+        sortable: true
+    created_at:
+        label: 'Created at'
+        type: datetime
+        sortable: true
+    updated_at:
+        label: 'Updated at'
+        type: datetime
+        sortable: true

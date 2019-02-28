@@ -1,0 +1,11 @@
+{% if trick.tags %}
+    <ul class="tags {{ nowrap ? 'tags--nowrap' }}">
+        {% for tag in trick.tags %}
+            <li class="tags__tag">
+                <a href="{{ 'tag' | page({slug: tag.slug}) }}" class="tags__link">
+                    {{ tag.name }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}

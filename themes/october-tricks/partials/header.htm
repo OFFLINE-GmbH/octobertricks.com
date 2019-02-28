@@ -1,0 +1,26 @@
+<header class="header">
+    <div class="wrapper">
+        <div class="row row--header">
+            <div class="logo">
+                <a href="{{ '/' | app }}" class="logo__link">
+                    October Tricks
+                </a>
+            </div>
+            <nav class="nav-main">
+                <a id="navigation" class="skiplink-anchor" aria-hidden="true"></a>
+                <div class="nav-mobile-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="20">
+                        <path d="M0 0h25v3H0V0zm0 17h25v3H0v-3zm0-8.5h25v3H0v-3z" fill-rule="evenodd" fill="#333"/>
+                    </svg>
+                </div>
+                {% partial 'navigation' %}
+            </nav>
+        </div>
+        <section class="lead">
+            <h2 class="lead__heading">October CMS resources and help articles</h2>
+            <p class="lead__text">Simple and to the point. Optimized by the community.</p>
+        </section>
+        {% partial 'searchbox' %}
+        {% partial 'navmobile' %}
+    </div>
+</header>

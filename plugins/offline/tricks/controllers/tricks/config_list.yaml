@@ -1,0 +1,12 @@
+title: Tricks
+modelClass: OFFLINE\Tricks\Models\Trick
+list: $/offline/tricks/models/trick/columns.yaml
+recordUrl: 'offline/tricks/tricks/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+recordsPerPage: 20
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'

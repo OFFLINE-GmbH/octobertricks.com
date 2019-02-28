@@ -1,0 +1,14 @@
+<div class="small-trick">
+    <a href="{{ 'trick' | page({slug:trick.slug}) }}" class="small-trick__title">
+        {{ trick.title }}
+        <span class="trick-votes">
+            {{ trick.votes }}
+        </span>
+    </a>
+    <a href="{{ 'trick' | page({slug:trick.slug}) }}" class="small-trick__subtitle">
+        by {{ trick.author.username }}
+    </a>
+    <div class="small-trick__tags">
+        {% partial 'trickDetail/tags' tags=trick.tags nowrap=true %}
+    </div>
+</div>

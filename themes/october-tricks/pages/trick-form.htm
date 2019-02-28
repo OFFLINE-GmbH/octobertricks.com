@@ -1,0 +1,49 @@
+title = "Trick"
+url = "/trick-edit/:slug?"
+layout = "default"
+is_hidden = 0
+
+[trickForm]
+slug = "{{ :slug }}"
+==
+use RainLab\User\Facades\Auth;
+function onStart()
+{
+    $this['hideSearchbox'] = true;
+    $this['editMode'] = $this->param('slug') !== null;
+
+    $this->page->title = $this['editMode']
+        ? 'Edit trick'
+        : 'Propose new content';
+}
+
+function onEnd()
+{
+    $trickForm = $this->components['trickForm'];
+    $user = Auth::getUser();
+    if ($trickForm->isProposal === false && $trickForm->trick === null && !$user) {
+        // To propose new content an account is required
+        return redirect()->to('/account');
+    }
+}
+==
+<section class="content content--no-sidebar content--pull-up">
+    <div class="box box--padding-1">
+        <h2 class="box__heading">
+            {{ editMode
+            ? 'Edit trick'
+            : 'Propose new content' }}
+        </h2>
+        <div class="box__subheading">
+            {% if editMode %}
+                {{ trickForm.isProposal
+                ? 'Changes will be published after manual review'
+                : 'Changes will be published immediately' }}
+            {% else %}
+                Use the form below to propose a new trick
+            {% endif %}
+        </div>
+
+        {% component 'trickForm' %}
+    </div>
+</section>

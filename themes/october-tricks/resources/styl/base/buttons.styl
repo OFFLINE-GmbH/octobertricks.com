@@ -1,0 +1,84 @@
+.btn
+    border-radius 4px
+    padding .9em 3em
+    line-height 1
+    display inline-block
+    outline none
+    transition .2s ease
+    text-align center
+    position relative
+    white-space nowrap
+    transition-property background, border-color, box-shadow
+    cursor pointer
+    appearance none
+    border none
+    box-shadow 0 2px 2px rgba(3, 27, 78, .3)
+    text-shadow none
+
+    &:focus,
+    &:hover
+        background grey-dark
+
+    &--bordered
+        border 1px solid rgba(0, 0, 0, .5)
+
+        &:hover
+            border-color rgba(0, 0, 0, .6)
+            background rgba(0, 0, 0, .025)
+
+    &--primary
+        border 1px solid primary
+        background primary
+        color #fff
+        box-shadow 0 2px 2px rgba(3, 27, 78, .3)
+
+        &:focus,
+        &:hover
+            background #F9703E
+
+    &--block
+        display block
+        width 100%
+
+    &--grey
+        background grey-darker
+        color #fff
+
+    &--small
+        padding .6em 1.2em
+
+    &--tiny
+        padding .4em 1.2em
+        font-size 1.3rem
+
+    &--flat
+        box-shadow none
+        background grey-lightest
+        color grey-darkest
+        &:hover
+            background primary-lightest
+            color primary-darkest
+
+    &--ghost
+        border none
+        background none
+        outline none
+        padding-left 2rem
+        padding-right 2rem
+        box-shadow none
+        color grey-dark
+        &:hover,
+        &:focus
+            color primary
+            background none
+            box-shadow none
+
+    &--inverse
+        color #fff
+
+        &.btn--bordered
+            border-color rgba(255, 255, 255, .5)
+
+            &:hover
+                border-color rgba(255, 255, 255, .6)
+                background rgba(255, 255, 255, .025)

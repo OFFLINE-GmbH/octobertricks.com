@@ -1,0 +1,60 @@
+columns:
+    title:
+        label: Title
+        type: text
+        searchable: true
+        sortable: true
+    content:
+        label: Content
+        type: text
+        searchable: true
+        invisible: true
+    user_id:
+        label: User
+        type: number
+        sortable: true
+        select: email
+        relation: author
+    votes_up:
+        label: 'Votes up'
+        type: number
+        searchable: false
+        invisible: true
+        sortable: true
+    votes_down:
+        label: 'Votes down'
+        type: number
+        invisible: true
+        sortable: true
+    votes:
+        label: Votes
+        type: number
+        sortable: true
+    revision:
+        label: Revision
+        type: number
+        sortable: true
+    slug:
+        label: Slug
+        type: text
+        searchable: true
+        invisible: true
+        sortable: true
+    references:
+        label: References
+        type: text
+        searchable: true
+        invisible: true
+        sortable: true
+    created_at:
+        label: 'Created at'
+        type: datetime
+        sortable: true
+    updated_at:
+        label: 'Updated at'
+        type: datetime
+        sortable: true
+    published_at:
+        label: 'Published at'
+        type: datetime
+        sortable: true

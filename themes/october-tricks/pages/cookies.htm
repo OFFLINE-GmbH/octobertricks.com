@@ -1,0 +1,21 @@
+title = "Cookies"
+url = "/cookies"
+layout = "default"
+is_hidden = 0
+
+[cookieManager]
+==
+function onStart() {
+$this['hideSearchbox'] = true;
+}
+==
+<section class="content content--full-width content--pull-up">
+    <div class="box box--padding-0">
+        <h2>Cookie settings</h2>
+        <p>Choose what cookies you want to accept</p>
+
+        <div class="mt-4">
+            {% component 'cookieManager' %}
+        </div>
+    </div>
+</section>

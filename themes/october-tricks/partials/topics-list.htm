@@ -1,0 +1,12 @@
+[topicList]
+==
+<ul class="box-list">
+    {% for topic in topicList.items %}
+        <li class="box-list__item {{ topic.id == active ? 'box-list__item--active' }}">
+            <a class="box-list__link" href="{{ 'topic' | page({slug: topic.slug}) }}">
+                {{ topic.name }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+

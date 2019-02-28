@@ -1,0 +1,43 @@
+columns:
+    trick_id:
+        label: Trick
+        type: number
+        searchable: false
+        sortable: true
+        select: title
+        relation: trick
+    user_id:
+        label: User
+        type: number
+        searchable: false
+        sortable: true
+        select: email
+        relation: user
+    votes_up:
+        label: 'Votes up'
+        type: number
+        invisible: true
+        sortable: true
+    votes_down:
+        label: 'Votes down'
+        type: number
+        invisible: true
+        sortable: true
+    votes:
+        label: Votes
+        type: number
+        sortable: true
+    content:
+        label: Content
+        type: text
+        searchable: true
+        sortable: true
+    ip_hash:
+        label: 'IP Hash'
+        type: text
+        invisible: true
+        sortable: true
+    created_at:
+        label: 'Created at'
+        type: datetime
+        sortable: true

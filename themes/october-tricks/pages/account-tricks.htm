@@ -1,0 +1,40 @@
+title = "User Tricks"
+url = "/your-tricks"
+layout = "default"
+is_hidden = 0
+
+[session]
+security = "user"
+redirect = "account"
+
+[trickList trickListAccount]
+user = 1
+unpublished = 1
+limit = 10
+==
+function onStart() {
+    $this['hideSearchbox'] = true;
+}
+==
+<section class="content content--no-sidebar content--pull-up">
+    <div class="box box--padding-1">
+        <h2 class="box__heading">
+            Your tricks
+        </h2>
+        <div class="box__subheading">
+            This is a list of all the tricks you have submitted
+        </div>
+
+        {% if trickListAccount.tricks.count() > 0 %}
+            {% component 'trickListAccount' %}
+        {% else %}
+            <a href="{{ 'trick-form' | page({slug: ''}) }}"
+               class="well">
+                <div class="well__heading">There is nothing to see here</div>
+                <div class="well__cta">
+                    Submit your first trick now
+                </div>
+            </a>
+        {% endif %}
+    </div>
+</section>

@@ -1,0 +1,80 @@
+$box
+    width 100%
+    background #FFFFFF
+    border 1px solid grey-light
+    box-sizing border-box
+    box-shadow 0 4px 4px rgba(16, 16, 16, 0.1)
+    border-radius 2px
+    padding 2rem
+
+list-item-padding = .6rem 1.2rem
+
+.box
+    @extends $box
+
+    + .box
+        margin-top 2rem
+
+    .sidebar &
+        .box__heading
+            padding list-item-padding
+
+    &--padding-0
+        padding 2rem
+
+    &--padding-1
+        padding 4rem
+
+    &--padding-2
+        padding 6rem 8rem
+        +below('s')
+            padding 4rem
+        +below('xs')
+            padding 2rem
+
+    &--centered
+        margin 0 auto
+
+    &--narrow
+        width 55rem
+        max-width 100%
+
+
+    &__heading
+        margin-bottom 2rem
+        font-size 2.2rem
+
+        a
+            color inherit
+
+        &--small
+            font-size 1.3rem
+            margin-bottom 0
+            color grey
+            white-space nowrap
+            text-overflow ellipsis
+            overflow hidden
+
+        &--medium
+            font-size 2rem
+
+    &__subheading
+        font-size 1.8rem
+        margin-top -2rem
+        margin-bottom 3rem
+        color grey-dark
+
+.box-list
+    &__link
+        padding list-item-padding
+        border-radius 2px
+        color inherit
+        display block
+        transition .2s ease color
+
+        &:hover
+            color primary-darker
+
+    &__item
+        &--active .box-list__link
+            background grey-lightest

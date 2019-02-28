@@ -1,0 +1,49 @@
+title = "Search"
+url = "/search"
+layout = "default"
+is_hidden = 0
+
+[trickList]
+order = "votes"
+limit = 10
+==
+function onStart()
+{
+    $this['q'] = input('q');
+    $this->components['trickList']->setQuery($this['q']);
+}
+==
+<aside class="sidebar">
+    <div class="sidebar__sticky">
+        {% partial 'sidebar' %}
+    </div>
+</aside>
+<section class="content">
+    <div class="box box--padding-1">
+        <h2 class="box__heading">
+            Search results for «{{ q }}»
+        </h2>
+        {% if trickList.tricks.count() > 0 %}
+            <div class="medium-tricks">
+                {% for trick in trickList.tricks %}
+                    {% partial 'medium-trick' trick=trick forAccount=false %}
+                {% endfor %}
+            </div>
+            {% if trickList.tricks.hasPages %}
+                <div class="mt-4">
+                    {{ trickList.tricks | raw }}
+                </div>
+            {% endif %}
+        {% else %}
+            <div class="well">
+                <h3 class="well__heading">
+                    No results
+                </h3>
+                <p class="well__cta">
+                    Your search returned no results
+                </p>
+            </div>
+        {% endif %}
+
+    </div>
+</section>

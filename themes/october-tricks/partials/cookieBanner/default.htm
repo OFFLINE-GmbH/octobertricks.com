@@ -1,0 +1,10 @@
+
+{% if not __SELF__.hide %}
+    <div class="gdpr-banner-host">
+        <div class="gdpr-banner">
+            <div class="gdpr-banner__wrapper">
+                {% partial __SELF__ ~ '::inner' %}
+            </div>
+        </div>
+    </div>
+{% endif %}

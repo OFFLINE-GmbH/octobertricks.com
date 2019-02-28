@@ -1,0 +1,52 @@
+<ul class="nav-items">
+    {% if user %}
+        <li class="nav-item nav-item--avatar nav-item--has-children nav-user">
+            {% partial 'avatar' user=user %}
+            <div class="nav-sub">
+                <div class="box">
+                    <div class="box__heading box__heading--small">{{ user.username }}</div>
+                    <ul class="box-list">
+                        <li class="box-list__item">
+                            <a class="box-list__link" href="{{ 'account-tricks' | page }}">
+                                Your tricks
+                            </a>
+                        </li>
+                        <li class="box-list__item">
+                            <a class="box-list__link" href="{{ 'account' | page }}">
+                                Your account
+                            </a>
+                        </li>
+                        <li class="box-list__item">
+                            <a class="box-list__link"
+                               data-request="onLogout"
+                               data-request-data="redirect: '/'">
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+    {% else %}
+        <li class="nav-item">
+            <a href="{{ 'account' | page }}" class="nav-link">Login / Sign up</a>
+        </li>
+    {% endif %}
+    <li class="nav-item">
+        <a href="{{ 'quality-guidelines' | page }}" class="nav-link">Quality Guidelines</a>
+    </li>
+    <li class="nav-item">
+        <a href="{{ 'about' | page }}" class="nav-link">About</a>
+    </li>
+    <li class="nav-item">
+        <a href="https://github.com/OFFLINE-GmbH/octobertricks.com" target="_blank" class="nav-link nav-link--external">
+            GitHub
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="{{ 'trick-form' | page({slug: ''}) }}"
+           class="nav-link nav-link--button">
+            Propose new content
+        </a>
+    </li>
+</ul>

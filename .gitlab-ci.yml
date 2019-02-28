@@ -1,0 +1,53 @@
+stages:
+  - build
+  - deploy
+
+build:
+    stage: build
+    image: registry.offline.swiss/internals/docker/website-gulp-build:latest
+    only:
+        - master
+    artifacts:
+        expire_in: '10 minutes'
+        untracked: true
+    script:
+        - cd themes/*
+        - ln -s /tmp/gulp/node_modules ./node_modules
+        - gulp --production
+
+optimize:
+    stage: build
+    image: registry.offline.swiss/internals/docker/website-optimizer:latest
+    only:
+        - master
+    artifacts:
+        expire_in: '10 minutes'
+        paths:
+            - themes/*
+    script:
+        - optipng themes/*/assets/*.png
+        - jpegoptim themes/*/assets/*.{jpg,jpeg}
+        - count=$(ls -1 themes/*/assets/*.svg 2>/dev/null | wc -l) || true
+        - if [ $count != 0 ]; then svgo --disable=removeViewBox themes/*/assets/*.svg; fi
+
+deploy:
+    image: registry.offline.swiss/internals/docker/envoy:latest
+    stage: deploy
+    only:
+        - master
+    dependencies:
+        - build
+        - optimize
+    script:
+        - eval $(ssh-agent -s)
+        - echo "$SSH_DEPLOY_KEY" > /tmp/id_rsa && chmod 400 /tmp/id_rsa && ssh-add /tmp/id_rsa && mkdir -p ~/.ssh
+        - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+        - |
+            envoy run deploy \
+                --author="$GITLAB_USER_LOGIN" \
+                --branch="$CI_COMMIT_REF_NAME" \
+                --commit="$CI_COMMIT_MESSAGE" \
+                --slack="$SLACK_URL" \
+                --user="$USER" \
+                --sever="$SERVER" \
+                --directory="$DIRECTORY"

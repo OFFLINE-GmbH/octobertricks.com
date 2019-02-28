@@ -1,0 +1,35 @@
+{% set trick = __SELF__.trick %}
+{% set comments = __SELF__.comments %}
+<div class="discussions">
+    <header class="discussions__header">
+        <div class="discussions__text">
+            <h3 class="discussions__heading">Discussion</h3>
+            <p class="discussions__meta">
+                {% partial __SELF__ ~ '::meta' %}
+            </p>
+        </div>
+    </header>
+
+    <div class="comments" id="comments">
+
+        {% if comments.count < 1 %}
+            <a href="javascript:document.getElementById('message').focus();" class="well">
+                <div class="well__icon">
+                    {{ svg('assets/icon-comment.svg') }}
+                </div>
+                <h3 class="well__heading">
+                    There are no comments yet
+                </h3>
+                <p class="well__cta">
+                    Be the first one to comment
+                </p>
+            </a>
+        {% endif %}
+
+        {% partial __SELF__ ~ '::comment-form' %}
+
+        <div class="comments-tree">
+            {% partial __SELF__ ~ '::comments' comments=comments %}
+        </div>
+    </div>
+</div>

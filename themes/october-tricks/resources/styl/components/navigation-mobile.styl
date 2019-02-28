@@ -1,0 +1,71 @@
+.nav-mobile-toggle
+    user-select none
+    +above('xl')
+        display none
+
+.nav-mobile
+    position absolute
+    user-select none
+    right 0
+    top 0
+    left auto
+    opacity 0
+    padding 2rem
+    visibility hidden
+    z-index 1000
+    width calc(100% - 20px)
+    background #fff
+    max-width 420px
+    overflow hidden
+    box-shadow 0 2px 5px rgba(0, 0, 0, .15)
+    transform translateY(10px)
+    transition .2s ease
+    transitoin-property opacity, visibility, transform
+    .nav-visible &
+        display block
+        opacity 1
+        visibility visible
+        transform translateY(0)
+    .nav-items
+        display block
+        margin 0
+    .nav-item
+        margin 0
+        padding 0
+    .nav-link
+        padding 1rem 0
+        margin 0
+        &--button
+            padding 1.5rem 1.2rem
+            margin-top 2rem
+    .nav-user
+        border-bottom 1px solid grey-lightest
+        padding-bottom 4rem
+        margin-bottom 2rem
+        .avatar
+            margin-bottom 3rem
+            +below('s')
+                width 4.5rem
+                height 4.5rem
+    .nav-sub
+        position static
+        opacity 1
+        visibility visible
+        padding 0
+        transform none
+        margin -1rem
+        .box
+            box-shadow none
+            padding 0
+            border none
+    .nav-mobile-close
+        user-select none
+        font-size 5rem
+        position absolute
+        right 0
+        top 0
+        line-height 2.5rem
+        color grey
+        padding 1.5rem
+        z-index 10500
+        margin 0

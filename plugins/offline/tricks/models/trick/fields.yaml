@@ -1,0 +1,76 @@
+fields:
+    title:
+        label: Title
+        span: auto
+        type: text
+    slug:
+        label: Slug
+        span: auto
+        preset:
+            field: title
+            type: slug
+        type: text
+tabs:
+    fields:
+        author:
+            label: Author
+            span: auto
+            type: relation
+            select: email
+            tab: Content
+        published_at:
+            label: 'Published at'
+            mode: datetime
+            span: right
+            type: datepicker
+            tab: Content
+        content:
+            label: Content
+            size: giant
+            mode: tab
+            span: left
+            type: markdown
+            tab: Content
+        tags:
+            label: Tags
+            type: taglist
+            mode: relation
+            span: right
+            separator: "comma"
+            tab: Content
+        topics:
+            label: Topics
+            type: relation
+            span: right
+            tab: Content
+        references:
+            label: References
+            prompt: 'Add new reference'
+            span: right
+            type: repeater
+            tab: Content
+            form:
+                fields:
+                    label:
+                        label: Label
+                        span: auto
+                        type: text
+                    url:
+                        label: URL
+                        span: right
+                        type: text
+        proposals:
+            label: Proposals
+            type: partial
+            path: proposals
+            span: full
+            tab: Proposals
+        comments:
+            span: full
+            type: partial
+            tab: Comments
+        votes:
+            label: Votes
+            span: auto
+            type: number
+            tab: Votes

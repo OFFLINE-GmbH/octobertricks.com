@@ -1,0 +1,22 @@
+border-color = #eee
+
+.table
+    width 100%
+
+    td, th
+        padding .5em .6em
+
+    th
+        text-align left
+        font-weight 500
+
+    &--bordered
+        tr:first-child td, tr:first-child th
+            border-top 1px solid border-color
+
+        td, th
+            border-bottom 1px solid border-color
+
+    &--with-bg
+        th
+            background #fafafa

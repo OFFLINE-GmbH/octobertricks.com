@@ -1,0 +1,60 @@
+.voter
+    text-align center
+    position absolute
+    top 0
+    right 0
+
+    &__votes
+        white-space nowrap
+        overflow hidden
+        text-overflow ellipsis
+        max-width 4rem
+        margin 0 auto
+        font-weight 500
+        font-size 1.7rem
+
+        .voter--voted-up &
+            background green-lightest
+            color green
+
+        .voter--voted-down &
+            background red-lightest
+            color red
+
+    &__arrow
+        appearance none
+        background none
+        padding 0
+        margin 0
+        box-shadow none
+        outline none
+        border none
+        cursor pointer
+
+        &:hover svg path
+            fill primary
+
+        svg
+            width 20px
+
+            path
+                transition .2s ease fill
+
+        &--up
+            svg
+                transform rotate(180deg)
+
+        &--active.voter__arrow--up
+            .voter--voted-up &
+                svg path
+                    fill green-light
+
+        &--active.voter__arrow--down
+            .voter--voted-down &
+                svg path
+                    fill red-light
+
+
+
+
+

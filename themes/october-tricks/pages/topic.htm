@@ -1,0 +1,53 @@
+title = "Topics"
+url = "/topics/:slug"
+layout = "default"
+is_hidden = 0
+
+[trickList]
+order = "votes"
+topic = "{{ :slug }}"
+limit = 20
+==
+function onEnd() {
+    $this['active'] = $this->controller->vars['trickList']->topic->id;
+}
+==
+
+<aside class="sidebar">
+    <div class="sidebar__sticky">
+        {% partial 'sidebar' %}
+    </div>
+</aside>
+<section class="content">
+    <div class="box box--padding-1">
+        <h2 class="box__heading">
+            {{ trickList.topic.name }}
+        </h2>
+        <div class="box__subheading">
+            {% set count = trickList.tricks.count() %}
+            {{ count }}
+            {{ count == 1 ? 'Trick' : 'Tricks' }}
+        </div>
+        {% if trickList.tricks.count() > 0 %}
+            <div class="small-tricks small-tricks--two-columns">
+                {% for trick in trickList.tricks %}
+                    {% partial 'small-trick' trick=trick %}
+                {% endfor %}
+            </div>
+            {% if trickList.tricks.hasPages %}
+                <div class="mt-4">
+                    {{ trickList.tricks | raw }}
+                </div>
+            {% endif %}
+        {% else %}
+            <div class="well">
+                <h3 class="well__heading">
+                    There are no tricks here yet
+                </h3>
+                <p class="well__cta">
+                    Be the first one to submit one!
+                </p>
+            </div>
+        {% endif %}
+    </div>
+</section>

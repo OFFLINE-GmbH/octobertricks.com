@@ -1,0 +1,19 @@
+columns:
+    name:
+        label: Name
+        type: text
+        searchable: true
+        sortable: true
+    slug:
+        label: Slug
+        type: text
+        searchable: true
+        sortable: true
+    created_at:
+        label: 'Created at'
+        type: datetime
+        invisible: true
+    updated_at:
+        label: 'Updated at'
+        type: datetime
+        invisible: true

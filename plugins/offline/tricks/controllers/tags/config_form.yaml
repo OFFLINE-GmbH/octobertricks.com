@@ -1,0 +1,11 @@
+name: Tag
+modelClass: OFFLINE\Tricks\Models\Tag
+form: $/offline/tricks/models/tag/fields.yaml
+defaultRedirect: offline/tricks/tags
+create:
+    redirect: 'offline/tricks/tags/update/:id'
+    redirectClose: offline/tricks/tags
+update:
+    redirect: offline/tricks/tags
+    redirectClose: offline/tricks/tags
+preview: {  }

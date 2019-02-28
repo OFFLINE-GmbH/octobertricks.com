@@ -1,0 +1,24 @@
+<form
+    data-request="onSignin" data-request-validate>
+    <div class="form-group">
+        <label for="userSigninLogin">{{ loginAttributeLabel }}</label>
+        <input
+            name="login"
+            type="text"
+            class="form-control"
+            id="userSigninLogin"/>
+        <div data-validate-for="login"></div>
+    </div>
+
+    <div class="form-group">
+        <label for="userSigninPassword">Password</label>
+        <input
+            name="password"
+            type="password"
+            class="form-control"
+            id="userSigninPassword" />
+        <div data-validate-for="password"></div>
+    </div>
+
+    <button type="submit" class="btn btn--grey">Sign in</button>
+</form>

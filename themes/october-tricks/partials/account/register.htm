@@ -1,0 +1,64 @@
+<form data-request="onRegister" data-request-validate="">
+
+    {% if loginAttribute == "username" %}
+        <div class="form-group">
+            <label for="registerUsername">Username</label>
+            <input
+                    name="username"
+                    type="text"
+                    class="form-control"
+                    id="registerUsername"/>
+            <div data-validate-for="username"></div>
+        </div>
+    {% endif %}
+
+    <div class="form-group">
+        <label for="registerPassword">Password</label>
+        <input
+                name="password"
+                type="password"
+                class="form-control"
+                id="registerPassword"/>
+        <div data-validate-for="password"></div>
+    </div>
+
+    <div class="form-group">
+        <label for="registerEmail">E-mail</label>
+        <input
+                name="email"
+                type="email"
+                class="form-control"
+                id="registerEmail"/>
+        <div data-validate-for="email"></div>
+    </div>
+
+    <div class="form-group">
+        <div class="form-control-checkbox">
+            <label for="terms">
+                <input type="checkbox" value="1" name="terms" id="terms">
+                I have read and accept the <a target="_blank"
+                                              href="{{ 'terms' | page }}">
+                    terms of service
+                </a>
+            </label>
+        </div>
+    </div>
+
+    <div class="form-actions">
+        <button type="submit" class="btn btn--grey" id="submit">
+            Register
+        </button>
+    </div>
+</form>
+{% put scripts %}
+    <script>
+        $(function () {
+            $('#submit').on('click', function (e) {
+                if (document.getElementById('terms').checked === false) {
+                    $.oc.flashMsg({text: 'Please accept the terms of service', class: 'error'})
+                    e.preventDefault()
+                }
+            })
+        })
+    </script>
+{% endput %}

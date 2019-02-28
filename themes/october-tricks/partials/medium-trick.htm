@@ -1,0 +1,68 @@
+<div class="medium-trick">
+    <div class="medium-trick__body">
+        {% if trick.is_published %}
+            <a href="{{ 'trick' | page({slug: trick.slug}) }}"
+               class="medium-trick__title">
+                {{ trick.title }}
+            </a>
+        {% else %}
+            <div class="medium-trick__title">
+                {{ trick.title }}
+            </div>
+        {% endif %}
+        {% if forAccount %}
+            {% set color = trick.is_published ? 'green' : 'grey' %}
+            <div class="medium-trick__meta medium-trick__meta--{{ color }}">
+                <div class="dot dot--{{ color }}"></div>
+                {{ trick.is_published ? 'Published' : 'Pending' }}
+            </div>
+        {% else %}
+            <div class="medium-trick__meta">
+                <div class="medium-trick__author">
+                    by {{ trick.author.username }}
+                </div>
+            </div>
+            <div class="medium-trick__tags">
+                {% partial 'trickDetail/tags' trick=trick %}
+            </div>
+        {% endif %}
+    </div>
+    <div class="medium-trick__stats">
+        <div class="medium-trick__stat">
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat__value">
+                        {{ trick.comments.count() }}
+                    </div>
+                    <div class="stat__label">Comments</div>
+                </div>
+                <div class="stat">
+                    <div class="stat__value">
+                        {{ trick.pageviews }}
+                    </div>
+                    <div class="stat__label">Pageviews</div>
+                </div>
+                <div class="stat">
+                    <div class="stat__value">
+                        {{ trick.votes }}
+                    </div>
+                    <div class="stat__label">Points</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if forAccount %}
+        <div class="medium-trick__actions">
+            {% if trick.is_published %}
+                <a class="btn btn--tiny btn--flat medium-trick__action"
+                   href="{{ 'trick' | page({slug: trick.slug}) }}">
+                    View
+                </a>
+            {% endif %}
+            <a class="btn btn--tiny btn--flat medium-trick__action"
+               href="{{ 'trick-form' | page({slug: trick.slug}) }}">
+                Edit
+            </a>
+        </div>
+    {% endif %}
+</div>

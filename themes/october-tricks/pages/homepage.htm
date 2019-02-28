@@ -1,0 +1,78 @@
+title = "Homepage"
+url = "/"
+layout = "default"
+is_hidden = 0
+
+[trickDetail]
+trick_of_the_day = 1
+
+[trickList newTricks]
+order = "created_at"
+limit = 5
+
+[trickList popularTricks]
+order = "votes"
+limit = 5
+==
+
+<aside class="sidebar">
+    <div class="sidebar__sticky">
+        {% partial 'sidebar' %}
+    </div>
+</aside>
+<section class="content">
+    <div class="box box--padding-1">
+        <h2 class="box__heading box__heading--small">
+            <a href="{{ 'trick' | page({slug: trick.slug}) }}">
+                Trick of the day
+            </a>
+        </h2>
+        <div class="trick-of-the-day">
+            <h3 class="trick-of-the-day__heading">
+                <a href="{{ 'trick' | page({slug: 'abc'}) }}">
+                    {{ trickDetail.trick.title }}
+                    <span class="trick-votes trick-votes--big">
+                        {{ trickDetail.trick.votes }}
+                    </span>
+                </a>
+            </h3>
+            <div class="trick-of-the-day__meta">
+                by {{ trick.author.username }}
+            </div>
+            {% partial 'trickDetail/tags' tags=trickDetail.trick.tags %}
+            <p class="trick-of-the-day__text">
+                <a href="{{ 'trick' | page({slug: trick.slug}) }}">
+                    {{ trickDetail.trick.excerpt }}
+                </a>
+            </p>
+        </div>
+
+    </div>
+
+    <div class="two columns mt-2">
+        <div class="column">
+            <div class="box box--padding-1">
+                <h3 class="box__heading box__heading--small">
+                    New Tricks
+                </h3>
+                <div class="small-tricks mt-2">
+                    {% for trick in newTricks.tricks %}
+                        {% partial 'small-trick' trick=trick %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="box box--padding-1">
+                <h3 class="box__heading box__heading--small">
+                    Popular tricks
+                </h3>
+                <div class="small-tricks mt-2">
+                    {% for trick in popularTricks.tricks %}
+                        {% partial 'small-trick' trick=trick %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

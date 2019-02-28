@@ -1,0 +1,44 @@
+{
+  "name": "october-cms-base-theme",
+  "version": "1.0.1",
+  "description": "OFFLINE GmbH October CMS Basis-Theme",
+  "main": "Gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^1.0.1",
+    "autoprefixer": "^8.6.2",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babelify": "^8.0.0",
+    "browser-sync": "^2.24.4",
+    "browserify": "^16.2.2",
+    "core-js": "^2.6.0",
+    "cssnano": "^3.4.0",
+    "cssnano-preset-advanced": "^4.0.0-rc.2",
+    "gulp": "^4.0.0",
+    "gulp-cssnano": "^2.0.0",
+    "gulp-if": "^2.0.2",
+    "gulp-sourcemaps": "^2.4.1",
+    "gulp-streamify": "^1.0.2",
+    "gulp-stylus": "^2.1.1",
+    "gulp-uglify": "^3.0.0",
+    "gulp-util": "^3.0.8",
+    "lost": "^8.2.1",
+    "postcss": "^7.0.14",
+    "postcss-normalize.css": "^0.4.0",
+    "poststylus": "^1.0.0",
+    "pump": "^3.0.0",
+    "rupture": "^0.7.1",
+    "vinyl-source-stream": "^2.0.0"
+  },
+  "cssnano": {
+    "preset": [
+      "advanced"
+    ]
+  },
+  "dependencies": {}
+}

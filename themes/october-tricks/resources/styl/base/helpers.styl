@@ -1,0 +1,51 @@
+for i in (0..20)
+    .mt-{i}
+        margin-top "%srem" % i !important
+    .mb-{i}
+        margin-bottom "%srem" % i !important
+    .pt-{i}
+        padding-top "%srem" % i !important
+    .pb-{i}
+        padding-bottom "%srem" % i !important
+
+.width-100
+    width 100%
+
+.below-l
+    +above('xl')
+        display none
+
+.above-l
+    +below('l')
+        display none
+
+.text-center
+    text-align center
+
+// .two.columns > .column*2
+.columns
+    width 100%
+    lost-flex-container row
+
+.two.columns .column
+    lost-column 1 / 2 2 2rem
+    +below('s')
+        lost-column 1 / 1
+        + .column
+            margin-top 2rem
+
+.three.columns .column
+    lost-column 1 / 3 3 2rem
+    +below('s')
+        lost-column 1 / 1
+        + .column
+            margin-top 2rem
+
+.four.columns .column
+    lost-column 1 / 4 3 2rem
+    +below('m')
+        lost-column 1 / 2
+    +below('s')
+        lost-column 1 / 1
+        + .column
+            margin-top 2rem

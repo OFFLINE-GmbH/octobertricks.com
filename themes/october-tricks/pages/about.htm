@@ -1,0 +1,40 @@
+title = "About"
+url = "/about"
+layout = "default"
+is_hidden = 0
+==
+function onStart() {
+    $this['hideSearchbox'] = true;
+}
+==
+<section class="content content--no-sidebar content--pull-up">
+    <div class="box box--padding-1">
+        <h2 class="box__heading">
+            About
+        </h2>
+        <div class="box__subheading">
+            octobertricks.com
+        </div>
+        <p class="mb-2">
+            October Tricks is an open source project by <a href="https://offline.ch">OFFLINE</a>.
+        </p>
+        <p class="mb-2">
+            The source of this website is available on
+            <a href="https://github.com/OFFLINE-GmbH/octobertricks.com"
+               target="_blank" rel="noopener norefferer">
+                GitHub</a>
+            licensed under an MIT license.
+        </p>
+        <p class="mb-2">
+            This website aims to be an easy to understand resource that provides the best
+            solutions to everyday problems an October developer might encounter.
+        </p>
+        <p>
+            The open source nature of the website enables the community to further improve the site over time.
+        </p>
+        <p>
+            Read more about the <a href="{{ 'terms' | page }}">
+                terms of service and our privacy policy</a>.
+        </p>
+    </div>
+</section>

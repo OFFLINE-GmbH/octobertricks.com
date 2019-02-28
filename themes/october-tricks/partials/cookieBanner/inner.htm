@@ -1,0 +1,12 @@
+<div class="gdpr-banner__row">
+    {% partial __SELF__ ~ '::message' %}
+</div>
+<div class="gdpr-banner__row">
+    <div class="gdpr-banner__actions">
+        <div class="gdpr-banner__buttons">
+            {% partial __SELF__ ~ '::optin' %}
+            {% partial __SELF__ ~ '::optout' %}
+        </div>
+        {% partial __SELF__ ~ '::settings' %}
+    </div>
+</div>

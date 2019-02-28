@@ -1,0 +1,53 @@
+[session]
+==
+<div class="comment">
+    <div class="comment__meta">
+        <div class="comment__avatar">
+            {% partial 'avatar' user=comment.user %}
+        </div>
+        <div class="comment__voter">
+            {% partial 'voter'
+                topic="comment"
+                base=comment.votes
+                id=comment.id
+                voted=__SELF__.commentVotes[comment.id] %}
+        </div>
+    </div>
+    <div class="comment__body">
+        <div class="comment__user">{{ comment.user.username }}</div>
+        <div class="comment__date">Post on {{ comment.created_at.format('F jS, Y g:i A') }}</div>
+        <div class="comment__text">
+            {{ comment.clean_content | raw }}
+        </div>
+        <div class="comment__actions">
+            <a href="javascript:;"
+               data-request="onReplyComment"
+               data-request-data="id: '{{ comment.id }}'"
+            >
+                Reply
+            </a>
+            {% if comment.user_id == user.id %}
+                <a href="javascript:;"
+                   data-request="onEditComment"
+                   data-request-data="id: '{{ comment.id }}'"
+                   data-request-success="document.querySelector('.message--{{ comment.id }}').focus();"
+                >
+                    Edit
+                </a>
+                <a href="javascript:;"
+                   data-request="onDeleteComment"
+                   data-request-confirm="Are you sure?"
+                   data-request-data="id: '{{ comment.id }}'"
+                >
+                    Delete
+                </a>
+            {% endif %}
+        </div>
+        <div class="comment__reply comment__reply--id-{{ comment.id }}"></div>
+        <div class="comment__children">
+            {% for child in comment.children %}
+                {% partial __SELF__ ~ '::comment' comment=child %}
+            {% endfor %}
+        </div>
+    </div>
+</div>

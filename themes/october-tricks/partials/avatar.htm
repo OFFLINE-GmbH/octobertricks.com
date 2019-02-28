@@ -1,0 +1,11 @@
+<div class="avatar">
+    {% set avatar = user.avatar %}
+    {% set fallback_avatar = user.fallback_avatar[0] %}
+    {% set fallback_avatar2x = user.fallback_avatar[1] %}
+    <img
+            alt=""
+            class="avatar__image"
+            src="{{ avatar ? avatar.thumb(45, 'auto') : fallback_avatar }}"
+            srcset="{{ avatar ? avatar.thumb(45, 'auto') : fallback_avatar }} 1x, {{ avatar ? avatar
+                .thumb(90, 'auto') : fallback_avatar2x }} 2x"/>
+</div>

@@ -1,0 +1,11 @@
+name: Comment
+modelClass: OFFLINE\Tricks\Models\Comment
+form: $/offline/tricks/models/comment/fields.yaml
+defaultRedirect: offline/tricks/comments
+create:
+    redirect: 'offline/tricks/comments/update/:id'
+    redirectClose: offline/tricks/comments
+update:
+    redirect: offline/tricks/comments
+    redirectClose: offline/tricks/comments
+preview: {  }

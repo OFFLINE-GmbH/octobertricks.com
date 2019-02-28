@@ -1,0 +1,66 @@
+*, *:before, *:after
+    box-sizing inherit
+
+::selection
+    color primary
+    background darken(grey-lightest, 5)
+
+html
+    font-size 62.5% // 1rem = 10px
+    box-sizing border-box
+    height 100%
+    overflow-y auto
+    -webkit-overflow-scrolling touch
+    +below('s')
+        font-size 55%
+
+body
+    font-family 'Roboto', sans-serif
+    font-weight 400
+    font-size 1.6rem
+    color black
+    height 100%
+    line-height 1.6
+    text-rendering optimizeLegibility
+
+h1, h2, h3, h4, h5, h6
+    margin 0
+    font-weight 500
+
+p
+    margin 0
+
+a
+    color primary
+    text-decoration none
+
+hr
+    border none
+    border-bottom 1px solid #ddd
+
+ul
+    list-style none
+    margin 0
+    padding 0
+
+strong
+    font-weight 500
+
+.primary
+    color primary
+
+.trick-votes
+    display inline-block
+    background grey-lightest
+    color grey
+    padding .4rem .6rem
+    border-radius 2px
+    font-size 1.3rem
+    position absolute
+    top .1rem
+    line-height 1
+    right 0
+    &--big
+        font-size 1.5rem
+        padding .8rem 1rem
+        top -.5rem

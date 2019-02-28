@@ -1,0 +1,17 @@
+title = "Account"
+url = "/account"
+layout = "default"
+is_hidden = 0
+
+[account]
+paramCode = "code"
+forceSecure = 0
+redirect = "/your-tricks"
+==
+function onStart() {
+    $this['hideSearchbox'] = true;
+}
+==
+<section class="content content--no-sidebar content--no-sidebar--wide content--pull-up">
+    {% component 'account' %}
+</section>

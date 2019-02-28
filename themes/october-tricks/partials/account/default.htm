@@ -1,0 +1,29 @@
+{% if not user %}
+    <div class="two columns">
+        <div class="column">
+            <div class="box box--padding-1">
+                <h3 class="box__heading">Login</h3>
+                <p class="box__subheading">Sign in with your credentials</p>
+                {% partial __SELF__ ~ '::signin' %}
+            </div>
+        </div>
+        <div class="column">
+            <div class="box box--padding-1">
+                <h3 class="box__heading">Register</h3>
+                <p class="box__subheading">Create a new account</p>
+                {% partial __SELF__ ~ '::register' %}
+            </div>
+        </div>
+    </div>
+
+{% else %}
+
+    <div class="box box--padding-1 box--centered box--narrow">
+        <h3 class="box__heading">Your account</h3>
+        <p class="box__subheading">Edit your account details</p>
+        {% partial __SELF__ ~ '::activation_check' %}
+        {% partial __SELF__ ~ '::update' %}
+        {% partial __SELF__ ~ '::deactivate_link' %}
+    </div>
+
+{% endif %}

@@ -1,0 +1,18 @@
+comments:
+    label: Comment
+    manage:
+        form: $/offline/tricks/models/comment/fields.yaml
+        list: $/offline/tricks/models/comment/columns.yaml
+    view:
+        list: $/offline/tricks/models/comment/columns.yaml
+        toolbarButtons: create|delete
+
+proposals:
+    label: Proposal
+    manage:
+        form: $/offline/tricks/models/proposal/fields.yaml
+        list: $/offline/tricks/models/proposal/columns.yaml
+    view:
+        showCheckboxes: false
+        list: $/offline/tricks/models/proposal/columns.yaml
+        toolbarButtons: false

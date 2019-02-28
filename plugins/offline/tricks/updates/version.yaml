@@ -1,0 +1,13 @@
+1.0.1:
+    - 'Initialize plugin.'
+    - builder_table_create_offline_tricks_tags.php
+    - builder_table_create_offline_tricks_topics.php
+    - builder_table_create_offline_tricks_tricks.php
+    - builder_table_create_offline_tricks_trick_vote.php
+    - builder_table_create_offline_tricks_comments.php
+    - builder_table_create_offline_tricks_comment_vote.php
+    - builder_table_create_offline_tricks_trick_topic.php
+    - builder_table_create_offline_tricks_trick_tag.php
+    - builder_table_create_offline_tricks_proposals.php
+    - builder_table_create_offline_tricks_proposal_topic.php
+    - builder_table_create_offline_tricks_proposal_tag.php

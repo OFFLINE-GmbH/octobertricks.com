@@ -1,0 +1,70 @@
+.tags
+    display flex
+    flex-wrap wrap
+    margin 0 0 -1rem 0
+    padding 0
+    &--nowrap
+        flex-wrap nowrap
+        overflow hidden
+        position relative
+        &:after
+            content ""
+            position absolute
+            background linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1))
+            right 0
+            width 75px
+            height 100%
+
+    li.tags__tag
+        font-size 1.3rem
+        white-space nowrap
+        margin 0 1rem 1rem 0
+        padding 0
+
+    &__link
+        display block
+        background primary-lightest
+        color primary-dark
+        padding .2rem 1rem
+        border-radius 2px
+        transition .2s ease
+        transition-property color, background
+
+        &:hover
+            background primary-lighter
+            color primary-darker
+
+
+.tagify.form-control
+    @extends .form-control
+    padding 0
+
+    &.tagify--focus
+        border-color grey-darker
+        box-shadow 0 3px 3px rgba(0, 0, 0, .075)
+        outline none
+
+    .tagify__input
+        padding .15rem .5rem
+        font-size 1.4rem
+
+    tag > x
+        color primary-darker
+
+    tag > div
+        color primary-darker
+        padding .15rem 2.2rem .15rem 1rem
+        font-size 1.4rem
+
+        &:before
+            @extends .tags__link
+            box-shadow none
+
+html .tagify__dropdown
+    border-color grey-dark
+    box-shadow 0 2px 3px rgba(0, 0, 0, .1)
+    border-bottom-left-radius 2px
+    border-bottom-right-radius 2px
+    .tagify__dropdown__item--active
+        background primary-lightest
+        color primary-dark

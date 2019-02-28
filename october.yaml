@@ -1,0 +1,40 @@
+app:
+    url: http://octobertricks.test
+    locale: en
+    debug: true
+
+cms:
+    theme: october-tricks
+    edgeUpdates: false
+    enableSafeMode: false
+
+database:
+    connection: mysql
+    host: localhost
+    port: 3306
+    username: root
+    password: 
+    database: octobertricks
+
+git:
+    deployment: gitlab
+    bareRepo: true     
+
+plugins:
+    - Bedard.Debugbar
+    - OnePilot.Client
+    - Rainlab.Builder
+    - Rainlab.Sitemap
+    - Rainlab.User
+    - Indikator.Backend
+    - Inetis.Dump
+    - OFFLINE.GDPR
+    - OFFLINE.Speedy
+    - OFFLINE.ResponsiveImages
+    - OFFLINE.Sentry
+
+mail:
+    host: smtp.mailgun.org
+    name: User Name
+    address: email@example.com
+    driver: log

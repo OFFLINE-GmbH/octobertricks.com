@@ -1,0 +1,30 @@
+{% set trick = __SELF__.trick %}
+
+<aside class="sidebar">
+    <div class="sidebar__sticky">
+        {% partial __SELF__ ~ '::sidebar' %}
+    </div>
+</aside>
+<section class="content">
+    <div class="box box--padding-1">
+        {% partial __SELF__ ~ '::trick' %}
+    </div>
+    <div class="box box--padding-1">
+        {% partial __SELF__ ~ '::discussion' %}
+    </div>
+</section>
+
+{% put meta %}
+    <meta property="og:title" content="{{ trick.title }}"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:description" content="{{ trick.excerpt }}"/>
+    <meta property="og:locale" content="en_US"/>
+    <meta property="og:url" content="{{ 'trick-detail' | page({slug: trick.slug}) }}"/>
+{% endput %}
+
+{% put meta %}
+    <link rel="stylesheet" href="{{ ['assets/hljs.github-gist.css'] | theme }}">
+{% endput %}
+{% put scripts %}
+    <script src="{{ 'assets/highlight.js' | theme }}" async onload="hljs.initHighlightingOnLoad()"></script>
+{% endput %}

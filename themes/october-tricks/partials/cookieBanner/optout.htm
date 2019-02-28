@@ -1,0 +1,11 @@
+<div class="gdpr-banner__opt-out">
+    <button role="button" 
+         tabindex="0" 
+         aria-pressed="false"
+         class="btn btn--ghost gdpr-banner__button--opt-out"
+         data-request="onDecline"
+         onclick="$('.gdpr-banner-host').addClass('gdpr-banner-host--out');"
+    >
+        {{ 'offline.gdpr::lang.cookie_banner.decline' | trans }}
+    </button>
+</div>

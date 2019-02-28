@@ -1,0 +1,72 @@
+
+.form-group
+    &:not(:last-child)
+        margin-bottom 2rem
+
+    label
+        display block
+        margin-bottom 4px
+        color grey-darkest
+
+    [data-validate-for].visible
+        color primary-darker
+        margin-top 3px
+
+.two.fields
+    lost-flex-container row
+
+    .form-group
+        lost-column 1 / 2 2 2rem
+
+.form-control:focus
+    border-color grey-darker
+    box-shadow 0 3px 3px rgba(0, 0, 0, .075)
+    outline none
+
+.form-control
+    border 1px solid grey-light
+    padding .6em .5em
+    width 100%
+    border-radius 2px
+    background #fff
+    box-shadow inset 0 1px 2px rgba(0, 0, 0, 0.1)
+
+    &::placeholder
+        color grey
+
+    &--markdown
+        line-height 1.3
+        font-family:
+                SFMono-Regular,
+                Menlo,
+                Monaco,
+                Consolas,
+                "Ubuntu Mono",
+                "Liberation Mono",
+                "Courier New",
+                monospace;
+
+.form-actions
+    display flex
+    justify-content flex-start
+    align-items center
+    .btn
+        margin-right 2rem
+
+
+.form-control-checkbox
+    padding-left 2rem
+    text-indent -2rem
+    cursor pointer
+    input
+        margin-right .5rem
+        top 1px
+        position relative
+
+.form-comment
+    color grey
+    font-size 1.4rem
+    margin-bottom 1rem
+
+.form-control + .form-comment
+    margin-top 1rem

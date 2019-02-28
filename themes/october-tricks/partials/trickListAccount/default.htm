@@ -1,0 +1,9 @@
+<div class="medium-trick-list">
+    {% for trick in __SELF__.tricks %}
+        {% partial 'medium-trick' trick=trick forAccount=true %}
+    {% endfor %}
+</div>
+
+{% if __SELF__.tricks.hasPages %}
+    {{ __SELF__.tricks | raw }}
+{% endif %}

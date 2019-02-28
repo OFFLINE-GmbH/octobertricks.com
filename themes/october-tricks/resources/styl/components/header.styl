@@ -1,0 +1,42 @@
+.header
+    padding 2rem 0
+    border-top 4px solid primary
+    position relative
+    z-index 1000
+
+    .row--header
+        margin 2rem 0
+        align-items center
+
+.logo
+    lost-column 1 / 4 2
+    +below('l')
+        lost-column 3 / 4 2
+
+    &__link
+        color inherit
+        display inline-block
+        font-size 3.1rem
+        font-weight 500
+        line-height 1
+        position relative
+        text-transform uppercase
+        transition .2s ease color
+        &:hover
+            color grey-darkest
+
+        &:after
+            content ""
+            left 0
+            bottom 2px
+            z-index -1
+            position absolute
+            height 4px
+            width 100%
+            background primary
+            border-radius 1px
+
+    img
+        max-width 100%
+        display block
+
