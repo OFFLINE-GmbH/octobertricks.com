@@ -14,6 +14,7 @@ const cssWhitelist = [
     'gdpr-banner-host--visible',
     'gdpr-banner-host--out',
     'hljs',
+    'trick__content',
 ]
 // =====================================================================
 import gulp from 'gulp'
@@ -63,7 +64,6 @@ gulp.task('styles', done => {
                     }),
                     purgecss({
                         whitelist: cssWhitelist,
-                        whitelistPatternsChildren: [/^\.content/],
                         content: [
                             `${basepath}/themes/**/*.htm`,
                             `${basepath}/plugins/**/*.htm`,
