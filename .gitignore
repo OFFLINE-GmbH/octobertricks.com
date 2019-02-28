@@ -5,6 +5,7 @@
 !composer.*
 composer.phar
 !.env.*
+!README.md
 *.save*
 !october.yaml
 !git.cron.sh
