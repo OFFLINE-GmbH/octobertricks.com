@@ -35,28 +35,6 @@
                         <span class="trick__reference-url">{{ reference.url }}</span>
                     </a>
                 {% endfor %}
-                {% for reference in trick.references %}
-                    <a href="{{ reference.url }}"
-                       class="trick__reference"
-                       rel="noopener nofollow noreferrer"
-                       target="_blank">
-                        <span class="trick__reference-label">
-                            {{ reference.label }}
-                        </span>
-                        <span class="trick__reference-url">{{ reference.url }}</span>
-                    </a>
-                {% endfor %}
-                {% for reference in trick.references %}
-                    <a href="{{ reference.url }}"
-                       class="trick__reference"
-                       rel="noopener nofollow noreferrer"
-                       target="_blank">
-                        <span class="trick__reference-label">
-                            {{ reference.label }}
-                        </span>
-                        <span class="trick__reference-url">{{ reference.url }}</span>
-                    </a>
-                {% endfor %}
             </div>
         {% endif %}
     </section>
