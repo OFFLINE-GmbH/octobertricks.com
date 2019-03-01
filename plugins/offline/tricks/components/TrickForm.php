@@ -96,9 +96,10 @@ class TrickForm extends ComponentBase
                 $trick           = new Proposal();
                 $trick->trick_id = $this->trick->id;
             }
+            $references        = array_get($data, 'references');
             $trick->title      = $data['title'];
             $trick->content    = $data['content'];
-            $trick->references = array_values(array_wrap(array_get($data, 'references')));
+            $trick->references = $references ? array_values($references) : [];
             $trick->user_id    = optional($user)->id;
 
             // Publish moderator tricks immediately
