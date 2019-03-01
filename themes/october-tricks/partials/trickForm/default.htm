@@ -18,6 +18,41 @@
             <div data-validate-for="content"></div>
         </div>
         <div class="form-group">
+            <label>References</label>
+            <div class="form-comment">Add additional online resources to your trick</div>
+            <div class="form-repeater" id="repeater">
+                <div class="form-repeater__rows" data-row-count="{{ trick.references | length }}">
+                    {% for index, reference in trick.references %}
+                        <div class="form-repeater__row">
+                            <div class="form-repeater__remove">&times;</div>
+                            <div class="form-repeater__fields">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input class="form-control"
+                                           type="text" name="references[{{index}}][label]"
+                                           value="{{ reference.label }}"
+                                           placeholder="October CMS Documentation on Topic X">
+                                    <div data-validate-for="references.{{ index }}.label"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">URL</label>
+                                    <input class="form-control"
+                                           type="text" name="references[{{ index }}][url]"
+                                           value="{{ reference.url }}"
+                                           placeholder="https://octobertricks.com">
+                                    <div data-validate-for="references.{{ index }}.url"></div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="form-repeater__add" id="repeater-add">
+                    + Add reference
+                </div>
+            </div>
+            <div data-validate-for="references"></div>
+        </div>
+        <div class="form-group">
             <label>Topics</label>
             <div class="form-comment">If your trick fits more than one topic select multiple. Select at least one.</div>
             <div class="two columns">
@@ -63,6 +98,27 @@
 </div>
 {% put scripts %}
     <script src="{{ 'assets/tagify.min.js' | theme }}"></script>
+    <script type="text/template" id="repeater-template">
+        <div class="form-repeater__row">
+            <div class="form-repeater__remove">&times;</div>
+            <div class="form-repeater__fields">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input class="form-control"
+                           type="text" name="references[{index}][label]"
+                           placeholder="October CMS Documentation on Topic X">
+                    <div data-validate-for="references.{index}.label"></div>
+                </div>
+                <div class="form-group">
+                    <label for="name">URL</label>
+                    <input class="form-control"
+                           type="text" name="references[{index}][url]"
+                           placeholder="https://octobertricks.com">
+                    <div data-validate-for="references.{index}.url"></div>
+                </div>
+            </div>
+        </div>
+    </script>
     <script>
         $(function () {
             var input = document.querySelector('#tagify');
@@ -97,6 +153,28 @@
             }
 
             renderTagsInputs()
+
+            var Repeater = {
+                el: document.querySelector('#repeater'),
+                tmpl: document.querySelector('#repeater-template'),
+                addBtn: document.querySelector('#repeater-add'),
+                rows: document.querySelector('.form-repeater__rows'),
+                addRow: function () {
+                    index = +Date.now()
+                    var tmpl = this.tmpl.textContent.replace(/\{index\}/g, index)
+                    $(this.rows).append($(tmpl))
+                },
+                init: function () {
+                    this.addBtn.addEventListener('click', this.addRow.bind(this))
+                    var vm = this
+                    $('body').on('click', '.form-repeater__remove', function () {
+                        if (confirm('Remove this reference?')) {
+                            $(this).parent().remove()
+                        }
+                    })
+                }
+            }
+            Repeater.init();
         })
     </script>
 {% endput %}

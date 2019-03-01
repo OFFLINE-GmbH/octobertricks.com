@@ -22,8 +22,8 @@ class Trick extends Model
         'title'              => 'required',
         'content'            => 'required',
         'published_at'       => 'nullable|date',
-        'references.*.label' => 'required',
-        'references.*.url'   => 'required|url',
+        'references.*.label' => 'sometimes|required',
+        'references.*.url'   => 'sometimes|required|url',
     ];
     public $cats = [
         'revision'   => 'integer',

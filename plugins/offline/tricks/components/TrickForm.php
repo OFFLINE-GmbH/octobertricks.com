@@ -63,13 +63,18 @@ class TrickForm extends ComponentBase
         }
 
         $v = Validator::make($data, [
-            'title'   => 'required|min:20',
-            'content' => 'required|min:50',
-            'topics'  => 'required|array|min:1|max:4',
-            'tags'    => 'required|array|min:1|max:8',
+            'title'              => 'required|min:20',
+            'content'            => 'required|min:50',
+            'topics'             => 'required|array|min:1|max:4',
+            'tags'               => 'required|array|min:1|max:8',
+            'references.*.label' => 'sometimes|required',
+            'references.*.url'   => 'sometimes|required|url',
         ], [
-            'topics.required' => 'Please select at least one topic.',
-            'tags.required'   => 'Please add at least one tag.',
+            'topics.required'             => 'Please select at least one topic.',
+            'tags.required'               => 'Please add at least one tag.',
+            'references.*.label.required' => 'Please add a reference label',
+            'references.*.url.required'   => 'Please add a reference URL',
+            'references.*.url.url'        => 'The URL format is invalid',
         ]);
 
         if ($v->fails()) {
@@ -88,20 +93,26 @@ class TrickForm extends ComponentBase
         DB::transaction(function () use ($data, $tags, $user) {
             $trick = $this->trick ?? new Trick();
             if ($this->isProposal) {
-                $trick = new Proposal();
+                $trick           = new Proposal();
                 $trick->trick_id = $this->trick->id;
             }
-            $trick->title   = $data['title'];
-            $trick->content = $data['content'];
-            $trick->user_id = optional($user)->id;
+            $trick->title      = $data['title'];
+            $trick->content    = $data['content'];
+            $trick->references = array_values(array_wrap(array_get($data, 'references')));
+            $trick->user_id    = optional($user)->id;
+
+            // Publish moderator tricks immediately
+            if ($trick->published_at === null && optional($user->groups->pluck('code'))->contains('moderators')) {
+                $trick->published_at = now();
+            }
 
             $trick->save();
 
-            $trick->tags()->attach($tags);
-            $trick->topics()->attach($data['topics']);
+            $trick->tags()->sync($tags);
+            $trick->topics()->sync($data['topics']);
         });
 
-        if ($this->trick && !$this->isProposal) {
+        if ($this->trick && ! $this->isProposal) {
             Flash::success('Saved changes');
             $accountTricks = $this->controller->pageUrl('account-tricks');
 

@@ -17,3 +17,11 @@ composer global require offline/oc-bootstrapper
 1. Edit the hostname and database settings in `october.yaml`
 1. Run `october install` from the repo's root directory
 1. Done!
+
+### Compile theme assets
+
+1. Run `npm i` in `themes/october-tricks`
+1. Use `gulp browser-sync` for development or `gulp --production` to build production assets.
+
+**Note:** If you create a 
+PR you don't have to compile the assets manually. This is done during the deployment process.

@@ -122,7 +122,7 @@ class TrickDetail extends ComponentBase
         $comment->parent_id = $parent;
         $comment->save();
 
-        $comments = $this->getComments('created_at');
+        $comments = $this->getComments($id ? 'votes' : 'created_at');
 
         Flash::success('Comment saved');
 

@@ -20,6 +20,45 @@
     </header>
     <section class="trick__content">
         {{ trick.clean_content | raw }}
+
+
+        {% if trick.references %}
+            <div class="trick__references">
+                {% for reference in trick.references %}
+                    <a href="{{ reference.url }}"
+                       class="trick__reference"
+                       rel="noopener nofollow noreferrer"
+                       target="_blank">
+                        <span class="trick__reference-label">
+                            {{ reference.label }}
+                        </span>
+                        <span class="trick__reference-url">{{ reference.url }}</span>
+                    </a>
+                {% endfor %}
+                {% for reference in trick.references %}
+                    <a href="{{ reference.url }}"
+                       class="trick__reference"
+                       rel="noopener nofollow noreferrer"
+                       target="_blank">
+                        <span class="trick__reference-label">
+                            {{ reference.label }}
+                        </span>
+                        <span class="trick__reference-url">{{ reference.url }}</span>
+                    </a>
+                {% endfor %}
+                {% for reference in trick.references %}
+                    <a href="{{ reference.url }}"
+                       class="trick__reference"
+                       rel="noopener nofollow noreferrer"
+                       target="_blank">
+                        <span class="trick__reference-label">
+                            {{ reference.label }}
+                        </span>
+                        <span class="trick__reference-url">{{ reference.url }}</span>
+                    </a>
+                {% endfor %}
+            </div>
+        {% endif %}
     </section>
     <div class="trick__actions">
         <a href="{{ 'trick-form' | page({slug: trick.slug}) }}"

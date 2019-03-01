@@ -86,6 +86,39 @@ voter-width = 8rem
         .voter
             top 0
 
+    &__references
+        margin 0 0 2rem 0
+        lost-flex-container row
+
+    &__reference
+        border 1px solid grey-light
+        border-radius 2px
+        box-shadow 0 2px 3px rgba(0, 0, 0, .1)
+        padding 1rem 1.25rem
+        display block
+        lost-column 1 / 2 2 2rem
+        overflow hidden
+        margin-top 2rem
+        +below('m')
+            lost-column 1 / 1
+
+        &-label
+            color grey-darkest
+            font-size 1.5rem
+            padding-right 2.2rem
+            white-space nowrap
+            text-overflow ellipsis
+            overflow hidden
+            display block
+
+        &-url
+            color grey
+            white-space nowrap
+            text-overflow ellipsis
+            overflow hidden
+            font-size 1.4rem
+            padding-right 1rem
+            display block
 
 .small-tricks
     &--two-columns
@@ -116,6 +149,8 @@ voter-width = 8rem
         transition .2s ease color
         position relative
         padding-right 3rem
+        overflow hidden
+        text-overflow ellipsis
 
         &:hover
             color primary
@@ -182,10 +217,13 @@ voter-width = 8rem
         text-overflow ellipsis
         overflow hidden
         color black
+        +below('m')
+            font-size 1.6rem
 
     &__body
         flex 1 1 auto
         padding-right 2rem
+        overflow auto
 
     &__author
         margin-top -1rem

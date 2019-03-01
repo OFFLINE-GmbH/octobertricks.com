@@ -36,8 +36,7 @@
 
     &--markdown
         line-height 1.3
-        font-family:
-                SFMono-Regular,
+        font-family: SFMono-Regular,
                 Menlo,
                 Monaco,
                 Consolas,
@@ -50,6 +49,7 @@
     display flex
     justify-content flex-start
     align-items center
+
     .btn
         margin-right 2rem
 
@@ -58,6 +58,7 @@
     padding-left 2rem
     text-indent -2rem
     cursor pointer
+
     input
         margin-right .5rem
         top 1px
@@ -70,3 +71,49 @@
 
 .form-control + .form-comment
     margin-top 1rem
+
+.form-repeater
+    &__row
+        position relative
+
+    &__rows
+        margin-bottom 2rem
+
+    &__fields
+        lost-flex-container row
+        padding 1rem 2rem 2rem
+        background lighten(grey-lightest, 2)
+
+    &__remove
+        cursor pointer
+        position absolute
+        right 1rem
+        top .75rem
+        font-size 1.8rem
+        line-height 1
+        color grey-dark
+
+    .form-group
+        lost-column 1 / 2 2 2rem
+        margin 0
+
+        label
+            font-size 1.5rem
+        +below('m')
+            lost-column 1 / 1
+            &:not(:last-child)
+                margin-bottom 1rem
+
+    &__add
+        color grey
+        padding 1rem
+        text-align center
+        font-size 1.4rem
+        border 1px dashed grey-light
+        border-radius 2px
+        cursor pointer
+        transition .2s ease border-color
+        user-select none
+
+        &:hover
+            border 1px dashed grey
