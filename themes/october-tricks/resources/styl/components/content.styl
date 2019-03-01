@@ -30,10 +30,13 @@
     ol, ul
         margin 0
         padding 0
+        &:not(:last-child)
+            margin-bottom 2rem
 
     li
         margin 0 0 1rem 1.9rem
-        padding 0 0 0 1rem
+        padding 0
+        list-style disc
 
         &:last-child
             margin-bottom 0
