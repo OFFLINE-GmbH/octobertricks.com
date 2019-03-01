@@ -15,6 +15,7 @@ const cssWhitelist = [
     'gdpr-banner-host--out',
     'hljs',
     'trick__content',
+    'pagination',
 ]
 // =====================================================================
 import gulp from 'gulp'
