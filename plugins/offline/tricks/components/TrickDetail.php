@@ -52,8 +52,8 @@ class TrickDetail extends ComponentBase
             ->with(['tags', 'comments', 'topics', 'author'])
             ->when($this->property('trick_of_the_day'), function ($q) {
                 $entries      = Trick::published()->count();
-                $dayOfTheYear = date('z');
-                $q->skip(($entries % $dayOfTheYear) - 1);
+                $dayOfTheYear = (int)date('z');
+                $q->skip($dayOfTheYear % $entries)->orderBy('created_at', 'asc');
             }, function ($q) {
                 $q->whereSlug($this->property('slug'));
             })
