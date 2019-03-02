@@ -30,6 +30,12 @@ navigation:
                 icon: icon-file
                 permissions:
                     - 'offline.tricks::manage_tricks'
+            side-menu-item:
+                label: Proposals
+                url: offline/tricks/proposals
+                icon: icon-file
+                permissions:
+                    - 'offline.tricks::manage_tricks'
             tricks-comments:
                 label: Comments
                 url: offline/tricks/comments

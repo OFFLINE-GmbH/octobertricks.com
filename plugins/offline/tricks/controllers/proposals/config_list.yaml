@@ -1,7 +1,7 @@
-title: Tricks
-modelClass: OFFLINE\Tricks\Models\Trick
-list: $/offline/tricks/models/trick/columns.yaml
-recordUrl: 'offline/tricks/tricks/update/:id'
+title: Proposals
+modelClass: OFFLINE\Tricks\Models\Proposal
+list: $/offline/tricks/models/proposal/columns.yaml
+recordUrl: 'offline/tricks/proposals/update/:id'
 noRecordsMessage: 'backend::lang.list.no_records'
 recordsPerPage: 20
 showSetup: true

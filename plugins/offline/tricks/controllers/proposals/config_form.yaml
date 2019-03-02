@@ -1,0 +1,11 @@
+name: Proposal
+modelClass: OFFLINE\Tricks\Models\Proposal
+form: $/offline/tricks/models/proposal/fields.yaml
+defaultRedirect: offline/tricks/proposals
+create:
+    redirect: 'offline/tricks/proposals/update/:id'
+    redirectClose: offline/tricks/proposals
+update:
+    redirect: offline/tricks/proposals
+    redirectClose: offline/tricks/proposals
+preview: {  }

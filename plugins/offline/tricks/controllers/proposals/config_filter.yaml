@@ -1,0 +1,9 @@
+scopes:
+    status:
+        label: Status
+        type: group
+        conditions: status in (:filtered)
+        options:
+            0: Pending
+            1: Accepted
+            2: Declined

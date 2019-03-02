@@ -1,0 +1,5 @@
+scopes:
+    published:
+        label: Only unpublished
+        type: checkbox
+        conditions: published_at is null
