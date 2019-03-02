@@ -86,7 +86,7 @@ class TrickDetail extends ComponentBase
             $this->topics = Topic::orderBy('sort_order')->get();
 
             $this->page->title            = $this->trick->title;
-            $this->page->meta_description = $this->trick->excerpt;
+            $this->page->meta_description = $this->trick->excerpt_without_code;
         }
     }
 

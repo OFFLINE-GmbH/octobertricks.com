@@ -1,5 +1,6 @@
 <?php namespace OFFLINE\Tricks\Models;
 
+use Cms\Classes\Page;
 use Model;
 use October\Rain\Database\Traits\Sluggable;
 use October\Rain\Database\Traits\Validation;
@@ -76,6 +77,15 @@ class Trick extends Model
         ), 40);
     }
 
+    public function getExcerptWithoutCodeAttribute()
+    {
+        $noCode = preg_replace('/```.*(\n[^```]+)+```/', '', $this->content);
+
+        return Str::words(Html::strip(
+            (new Markdown())->parse($noCode)
+        ), 40);
+    }
+
     public function getCleanContentAttribute()
     {
         $content = (new Markdown())->parse($this->content);
@@ -84,5 +94,29 @@ class Trick extends Model
             Html::clean($content),
             '<p><a><code><pre><i><b><strong><h1><h2><h3><h4><h5><h6><blockquote><em><ul><li><ol>'
         );
+    }
+
+    public static function resolveMenuItem($item, $url, $theme)
+    {
+        $pageName = 'trick';
+        $cmsPage  = Page::loadCached($theme, $pageName);
+        $items    = self
+            ::published()
+            ->get()
+            ->map(function (self $item) use ($cmsPage, $url, $pageName) {
+                $pageUrl = $cmsPage->url($pageName, ['slug' => $item->slug]);
+
+                return [
+                    'title'    => $item->name,
+                    'url'      => $pageUrl,
+                    'mtime'    => $item->updated_at,
+                    'isActive' => $pageUrl === $url,
+                ];
+            })
+            ->toArray();
+
+        return [
+            'items' => $items,
+        ];
     }
 }
