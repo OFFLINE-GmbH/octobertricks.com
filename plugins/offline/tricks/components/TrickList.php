@@ -86,14 +86,14 @@ class TrickList extends ComponentBase
                 $q->published();
             })
             ->when($this->topic, function ($q) {
-                $this->page->title            = $this->topic->name;
+                $this->page->title            = $this->topic->name . ' · Topic';
                 $this->page->meta_description = 'October CMS tricks on the topic ' . $this->topic->name;
                 $q->whereHas('topics', function ($q) {
                     $q->where('offline_tricks_topics.id', $this->topic->id);
                 });
             })
             ->when($this->tag, function ($q) {
-                $this->page->title            = $this->tag->name;
+                $this->page->title            = $this->tag->name. ' · Tag';
                 $this->page->meta_description = 'October CMS tricks with the tag ' . $this->tag->name;
                 $q->whereHas('tags', function ($q) {
                     $q->where('offline_tricks_tags.id', $this->tag->id);
