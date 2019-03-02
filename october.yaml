@@ -28,6 +28,7 @@ plugins:
     - Rainlab.User
     - Indikator.Backend
     - Inetis.Dump
+    - Zen.Robots
     - October.Drivers
     - OFFLINE.GDPR
     - OFFLINE.Speedy

@@ -1,3 +1,9 @@
+==
+function onStart()
+{
+    $this['tag'] = $this->page->url === '/' ? 'h1' : 'h2';
+}
+==
 <header class="header">
     <div class="wrapper">
         <div class="row row--header">
@@ -17,7 +23,7 @@
             </nav>
         </div>
         <section class="lead">
-            <h1 class="lead__heading">October CMS resources and help articles</h1>
+            <{{ tag }} class="lead__heading">October CMS resources and help articles</{{ tag }}>
             <p class="lead__text">Simple and to the point. Optimized by the community.</p>
         </section>
         {% partial 'searchbox' %}

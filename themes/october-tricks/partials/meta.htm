@@ -1,3 +1,9 @@
+==
+function onStart()
+{
+    $this['canonical'] = request()->url();
+}
+==
 {% set company_name    = 'October CMS Tricks' %}
 {% set homepage_title  = 'October Tricks · October CMS resources and help articles' %}
 {% set theme_color     = '#f35627' %}
@@ -17,6 +23,7 @@
 <meta name="theme-color" content="{{ theme_color }}">
 <meta name="description" content="{{ this.page.meta_description }}">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="{{ canonical }}">
 
 <link rel="icon" type="image/png" href="{{ 'assets/favicon-16x16.png'|theme }}" sizes="16x16">
 <link rel="icon" type="image/png" href="{{ 'assets/favicon-32x32.png'|theme }}" sizes="32x32">
