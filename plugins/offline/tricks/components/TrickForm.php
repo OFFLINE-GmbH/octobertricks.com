@@ -54,6 +54,15 @@ class TrickForm extends ComponentBase
         }
     }
 
+    public function onRun()
+    {
+        if ($this->trick) {
+            $this->page->title            = 'Edit trick · ' . $this->trick->title;
+            $this->page->meta_description = 'Use this form to propose changes to the trick "' .
+                $this->trick->title . '"';
+        }
+    }
+
     public function onSubmit()
     {
         $data = post(null, []);
