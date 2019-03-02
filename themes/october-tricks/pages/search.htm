@@ -21,14 +21,14 @@ $this->components['trickList']->setQuery($this['q']);
 <section class="content">
     <div class="box box--padding-1">
         {% if not q %}
-            <h2 class="box__heading">
+            <h1 class="box__heading">
                 Please enter a search term
-            </h2>
+            </h1>
             <p>Results will be displayed here.</p>
         {% else %}
-            <h2 class="box__heading">
+            <h1 class="box__heading">
                 Search results for «{{ q }}»
-            </h2>
+            </h1>
             {% if trickList.tricks.count() > 0 %}
                 <div class="medium-tricks">
                     {% for trick in trickList.tricks %}
