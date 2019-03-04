@@ -17,7 +17,7 @@
 {% put meta %}
     <meta property="og:title" content="{{ trick.title }}"/>
     <meta property="og:type" content="website"/>
-    <meta property="og:description" content="{{ trick.excerpt }}"/>
+    <meta property="og:description" content="{{ trick.excerpt_without_code }}"/>
     <meta property="og:locale" content="en_US"/>
     <meta property="og:url" content="{{ 'trick-detail' | page({slug: trick.slug}) }}"/>
 {% endput %}
