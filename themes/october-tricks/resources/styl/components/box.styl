@@ -65,6 +65,20 @@ list-item-padding = .6rem 1.2rem
         color grey-dark
 
 .box-list
+    &--reduced
+        max-height 30rem
+        overflow hidden
+        position relative
+        &:after
+            content ""
+            position absolute
+            background linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1))
+            height 14rem
+            width 100%
+            display block
+            z-index 100
+            bottom 0
+            left 0
     &__link
         padding list-item-padding
         border-radius 2px
@@ -78,3 +92,21 @@ list-item-padding = .6rem 1.2rem
     &__item
         &--active .box-list__link
             background grey-lightest
+
+.box-list-toggle
+    text-align center
+    font-size 1.2rem
+    color grey-dark
+    text-transform uppercase
+    letter-spacing .5px
+    width 100%
+    display block
+    margin-bottom -1rem
+    margin-top 1rem
+    &:before,
+    &:after
+        content "⌄"
+        position relative
+        top -3px
+        width 20px
+        display inline-block

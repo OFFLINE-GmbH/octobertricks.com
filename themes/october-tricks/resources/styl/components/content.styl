@@ -27,9 +27,15 @@
     &--full-width
         lost-column 1 / 1
 
+    +below('m')
+        &--order-first-mobile
+            order -10
+            margin-bottom 2rem
+
     ol, ul
         margin 0
         padding 0
+
         &:not(:last-child)
             margin-bottom 2rem
 
@@ -75,15 +81,12 @@
         position sticky
         top 10rem
         +at('m')
-            display flex
-            align-items flex-start
+            lost-flex-container row
             .box
-                flex 1 0 auto
-                margin-right 1rem
+                lost-column 1 / 2 2 2rem
 
                 + .box
                     margin 0
-                    margin-left 1rem
 
 .site-wrapper
     background grey-lightest

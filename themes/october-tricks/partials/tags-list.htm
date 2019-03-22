@@ -1,6 +1,6 @@
 [tagList]
 ==
-<ul class="box-list">
+<ul class="box-list box-list--reduced">
     {% for tag in tagList.items %}
         <li class="box-list__item">
             <a class="box-list__link" href="{{ 'tag' | page({slug: tag.slug}) }}">
@@ -10,3 +10,14 @@
     {% endfor %}
 </ul>
 
+<a href="javascript:;" class="box-list-toggle">
+    Show all
+</a>
+
+<script>
+    document.querySelector('.box-list-toggle').addEventListener('click', function() {
+        var list = document.querySelector('.box-list--reduced')
+        list.classList.remove('box-list--reduced')
+        this.remove()
+    })
+</script>
