@@ -1,0 +1,12 @@
+[tagList]
+==
+<ul class="box-list">
+    {% for tag in tagList.items %}
+        <li class="box-list__item">
+            <a class="box-list__link" href="{{ 'tag' | page({slug: tag.slug}) }}">
+                {{ tag.name }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+

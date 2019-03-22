@@ -88,6 +88,8 @@ class TrickDetail extends ComponentBase
             $this->page->title            = $this->trick->title;
             $this->page->meta_description = $this->trick->excerpt_without_code;
         }
+
+        $this->page['active'] = $this->trick->topics->first()->id;
     }
 
     public function onComment()

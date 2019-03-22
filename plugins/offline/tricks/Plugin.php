@@ -1,6 +1,7 @@
 <?php namespace OFFLINE\Tricks;
 
 use Event;
+use OFFLINE\Tricks\Components\TagList;
 use OFFLINE\Tricks\Components\TopicList;
 use OFFLINE\Tricks\Components\TrickDetail;
 use OFFLINE\Tricks\Components\TrickForm;
@@ -19,6 +20,7 @@ class Plugin extends PluginBase
     {
         return [
             TopicList::class   => 'topicList',
+            TagList::class     => 'tagList',
             TrickList::class   => 'trickList',
             TrickDetail::class => 'trickDetail',
             TrickForm::class   => 'trickForm',
@@ -50,7 +52,7 @@ class Plugin extends PluginBase
             return [
                 'all-tricks' => 'All tricks',
                 'all-topics' => 'All topics',
-                'all-tags' => 'All tags',
+                'all-tags'   => 'All tags',
             ];
         });
 
