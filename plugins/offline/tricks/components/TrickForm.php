@@ -112,7 +112,7 @@ class TrickForm extends ComponentBase
             $trick->user_id    = optional($user)->id;
 
             // Publish moderator tricks immediately
-            if ($trick->published_at === null && optional($user->groups->pluck('code'))->contains('moderators')) {
+            if ($this->isModerator() && $trick->published_at === null) {
                 $trick->published_at = now();
             }
 
@@ -132,5 +132,12 @@ class TrickForm extends ComponentBase
         return [
             '#form' => $this->renderPartial($this->alias . '::okay'),
         ];
+    }
+
+    protected function isModerator()
+    {
+        $user = Auth::getUser();
+
+        return $user && optional($user->groups->pluck('code'))->contains('moderators');
     }
 }
