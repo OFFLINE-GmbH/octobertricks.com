@@ -26,7 +26,7 @@ class Trick extends Model
         'references.*.label' => 'sometimes|required',
         'references.*.url'   => 'sometimes|required|url',
     ];
-    public $cats = [
+    public $casts = [
         'revision'   => 'integer',
         'votes_up'   => 'integer',
         'votes_down' => 'integer',
