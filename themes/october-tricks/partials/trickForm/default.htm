@@ -98,6 +98,8 @@
 </div>
 {% put scripts %}
     <script src="{{ 'assets/tagify.min.js' | theme }}"></script>
+    <script src="{{ 'assets/highlight.js' | theme }}"></script>
+    <script src="{{ 'assets/easymde.min.js' | theme }}"></script>
     <script type="text/template" id="repeater-template">
         <div class="form-repeater__row">
             <div class="form-repeater__remove">&times;</div>
@@ -175,9 +177,21 @@
                 }
             }
             Repeater.init();
+
+            var easyMDE = new EasyMDE({
+                showIcons: ['strikethrough', 'code'],
+                hideIcons: [],
+                element: document.querySelector('#trick_content'),
+                renderingConfig: {
+                    singleLineBreaks: false,
+                    codeSyntaxHighlighting: true,
+                },
+            });
         })
     </script>
 {% endput %}
-    {% put styles %}
-        <link rel="stylesheet" href="{{ 'assets/tagify.css' | theme }}">
-    {% endput %}
+{% put styles %}
+    <link rel="stylesheet" href="{{ 'assets/tagify.css' | theme }}">
+    <link rel="stylesheet" href="{{ ['assets/hljs.github-gist.css'] | theme }}">
+    <link rel="stylesheet" href="{{ 'assets/easymde.min.css' | theme }}">
+{% endput %}

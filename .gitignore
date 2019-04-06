@@ -20,6 +20,8 @@ themes/**/assets/*.map
 !themes/**/assets/tagify*
 !themes/**/assets/highlight.js
 !themes/**/assets/hljs.github-gist.css
+!themes/**/assets/easymde.min.js
+!themes/**/assets/easymde.min.css
 themes/**/node_modules
 !plugins
 
