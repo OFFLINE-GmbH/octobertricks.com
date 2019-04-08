@@ -16,6 +16,8 @@ const cssWhitelist = [
     'hljs',
     'trick__content',
     'pagination',
+    'editor-toolbar',
+    'CodeMirror',
 ]
 // =====================================================================
 import gulp from 'gulp'
