@@ -93,7 +93,7 @@ class TrickList extends ComponentBase
                 });
             })
             ->when($this->tag, function ($q) {
-                $this->page->title            = $this->tag->name. ' · Tag';
+                $this->page->title            = $this->tag->name . ' · Tag';
                 $this->page->meta_description = 'October CMS tricks with the tag ' . $this->tag->name;
                 $q->whereHas('tags', function ($q) {
                     $q->where('offline_tricks_tags.id', $this->tag->id);
@@ -115,7 +115,8 @@ class TrickList extends ComponentBase
                 });
             })
             ->orderByDesc($this->property('order'))
-            ->paginate($this->property('limit'));
+            ->paginate($this->property('limit'))
+            ->appends(['q' => input('q')]);
     }
 
     public function setQuery($query)
