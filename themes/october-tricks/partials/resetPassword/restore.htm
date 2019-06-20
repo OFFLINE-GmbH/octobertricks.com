@@ -1,0 +1,15 @@
+<p>
+    <strong>Lost your password?</strong> No problem! Enter your email address to verify your account.
+</p>
+
+<form
+        class="mt-2"
+        data-request="{{ __SELF__ }}::onRestorePassword"
+        data-request-update="'{{ __SELF__ }}::reset': '#partialUserResetForm'">
+    <div class="form-group">
+        <label for="userRestoreEmail">Email</label>
+        <input name="email" type="email" class="form-control" id="userRestoreEmail" placeholder="Enter your email">
+    </div>
+
+    <button type="submit" class="btn btn--grey">Restore password</button>
+</form>
