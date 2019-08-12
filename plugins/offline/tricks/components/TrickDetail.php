@@ -81,6 +81,7 @@ class TrickDetail extends ComponentBase
         }
 
         if ( ! $this->property('trick_of_the_day')) {
+            $this->trick->timestamps = false;
             $this->trick->increment('pageviews');
 
             $this->topics = Topic::orderBy('sort_order')->get();
