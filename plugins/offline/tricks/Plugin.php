@@ -6,6 +6,7 @@ use OFFLINE\Tricks\Components\TopicList;
 use OFFLINE\Tricks\Components\TrickDetail;
 use OFFLINE\Tricks\Components\TrickForm;
 use OFFLINE\Tricks\Components\TrickList;
+use OFFLINE\Tricks\Console\Seed;
 use OFFLINE\Tricks\Models\Tag;
 use OFFLINE\Tricks\Models\Topic;
 use OFFLINE\Tricks\Models\Trick;
@@ -29,6 +30,11 @@ class Plugin extends PluginBase
 
     public function registerSettings()
     {
+    }
+
+    public function register()
+    {
+        $this->registerConsoleCommand('tricks.seed', Seed::class);
     }
 
     public function boot()
