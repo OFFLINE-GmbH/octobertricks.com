@@ -30,21 +30,6 @@ abstract class AbstractGenerator
     {
     }
 
-    /**
-     * Helper function to chose between 2 cases with a chance percentage
-     */
-    protected function chose(int $chanceForFirst, callable $a, callable $b)
-    {
-        $random = rand(0, 99);
-
-        if ($chanceForFirst > $random) {
-            $a();
-        }
-        else {
-            $b();
-        }
-    }
-
     private function insertRandomData()
     {
         $faker = \Faker\Factory::create();
