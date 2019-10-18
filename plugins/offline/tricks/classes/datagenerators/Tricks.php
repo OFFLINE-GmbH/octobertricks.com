@@ -16,7 +16,6 @@ class Tricks extends AbstractGenerator
         $record->title = $faker->sentence(5);
         $record->content = $faker->text(200);
         $record->user_id = $faker->numberBetween(1, Users::$generateCount);
-        $record->pageviews = $faker->numberBetween(1, 2000);
         $record->revision = $faker->numberBetween(1, 5);
         $record->published_at = $faker->dateTimeBetween('-1 year', 'now');
     }
@@ -32,13 +31,14 @@ class Tricks extends AbstractGenerator
                 $trick->tags()->sync($tags);
             };
 
-            if ($topics = Topic::all()->random($faker->numberBetween(0, 3))) {
+            if ($topics = Topic::all()->random($faker->numberBetween(1, 3))) {
                 $trick->topics()->sync($topics);
             };
 
             $trick->votes_up = $faker->numberBetween(1, 100);
-            $trick->votes_down = $faker->numberBetween(1, 100);
+            $trick->votes_down = $faker->numberBetween(1, 5);
             $trick->votes = $trick->votes_up - $trick->votes_down;
+            $trick->pageviews = $faker->numberBetween(1, 2000);
             $trick->save();
         });
     }
