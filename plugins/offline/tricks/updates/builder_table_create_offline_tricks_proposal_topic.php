@@ -20,6 +20,6 @@ class BuilderTableCreateOfflineTricksProposalTopic extends Migration
     
     public function down()
     {
-        Schema::dropIfExists('offline_proposals_trick_topic');
+        Schema::dropIfExists('offline_tricks_proposal_topic');
     }
 }
