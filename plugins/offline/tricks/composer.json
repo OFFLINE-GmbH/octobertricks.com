@@ -1,0 +1,5 @@
+{
+    "require": {
+        "bhaktaraz/php-rss-generator": "dev-master"
+    }
+}

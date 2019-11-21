@@ -1,13 +1,14 @@
 <?php namespace OFFLINE\Tricks\Models;
 
+use Cache;
 use Cms\Classes\Page;
 use Model;
 use October\Rain\Database\Traits\Sluggable;
 use October\Rain\Database\Traits\Validation;
+use October\Rain\Parse\Markdown;
+use October\Rain\Support\Facades\Html;
 use RainLab\User\Models\User;
 use Str;
-use October\Rain\Support\Facades\Html;
-use October\Rain\Parse\Markdown;
 
 
 class Trick extends Model
@@ -46,6 +47,14 @@ class Trick extends Model
         'topics' => [Topic::class, 'table' => 'offline_tricks_trick_topic'],
         'tags'   => [Tag::class, 'table' => 'offline_tricks_trick_tag'],
     ];
+
+    public static function ofTheDay()
+    {
+        $entries      = self::published()->count();
+        $dayOfTheYear = (int)date('z');
+
+        return self::published()->skip($dayOfTheYear % $entries)->orderBy('created_at', 'asc')->first();
+    }
 
     public function beforeCreate()
     {
