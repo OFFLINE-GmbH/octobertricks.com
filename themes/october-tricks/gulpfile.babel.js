@@ -67,7 +67,7 @@ gulp.task('styles', done => {
                     }),
                     purgecss({
                         whitelist: cssWhitelist,
-                        whitelistPatterns: [/^\.content/, /pre/, /code/, /data-validate-for/, /gdpr/],
+                        whitelistPatterns: [/^\.content/, /pre/, /code/, /data-validate-for/, /gdpr/, /blockquote/],
                         whitelistPatternsChildren: [/^\.content/, /trick-content/, /gdpr/],
                         content: [
                             `${basepath}/themes/**/*.htm`,
