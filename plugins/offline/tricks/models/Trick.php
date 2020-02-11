@@ -101,7 +101,7 @@ class Trick extends Model
 
         return strip_tags(
             Html::clean($content),
-            '<p><a><code><pre><i><b><strong><h1><h2><h3><h4><h5><h6><blockquote><em><ul><li><ol>'
+            '<p><a><code><pre><i><b><strong><h1><h2><h3><h4><h5><h6><blockquote><em><ul><li><ol><table><tr><td><th><tbody>'
         );
     }
 
