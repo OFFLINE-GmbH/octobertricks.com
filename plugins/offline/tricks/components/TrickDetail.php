@@ -47,6 +47,10 @@ class TrickDetail extends ComponentBase
 
     public function init()
     {
+        if (!Trick::published()->count()) {
+            return; 
+        }
+        
         $this->trick = $this->page['trick'] = Trick
             ::published()
             ->with(['tags', 'comments', 'topics', 'author'])
