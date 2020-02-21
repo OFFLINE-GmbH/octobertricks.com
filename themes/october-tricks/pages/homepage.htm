@@ -39,7 +39,7 @@ limit = 5
                 </a>
             </h3>
             <div class="trick-of-the-day__meta">
-                by <a href="/authors/{{trick.author.username}}/tricks">{{ trick.author.username }}</a>
+                by <a class="author" href="/authors/{{trick.author.username}}/tricks">{{ trick.author.username }}</a>
             </div>
             {% partial 'trickDetail/tags' tags=trickDetail.trick.tags %}
         </div>
