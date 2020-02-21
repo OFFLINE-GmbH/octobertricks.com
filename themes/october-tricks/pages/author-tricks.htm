@@ -20,10 +20,10 @@ function onStart() {
 <section class="content content--no-sidebar content--pull-up">
     <div class="box box--padding-1">
         <h1 class="box__heading">
-            Tricks by author
+            Tricks by {{ trickListAuthor.property('username') }}
         </h1>
         <div class="box__subheading">
-            This is a list of all the tricks author has submitted
+            This is a list of all the tricks {{ trickListAuthor.property('username') }} has submitted.
         </div>
 
         {% if trickListAuthor.tricks.count() > 0 %}
