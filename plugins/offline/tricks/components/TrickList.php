@@ -5,6 +5,7 @@ use OFFLINE\Tricks\Models\Tag;
 use OFFLINE\Tricks\Models\Topic;
 use OFFLINE\Tricks\Models\Trick;
 use RainLab\User\Facades\Auth;
+use RainLab\User\Models\User;
 
 class TrickList extends ComponentBase
 {
@@ -75,6 +76,11 @@ class TrickList extends ComponentBase
         }
         if ($this->property('user')) {
             $this->user = Auth::getUser();
+        } else if ($this->property('username')) {
+            $this->user = User::where('username', $this->property('username'))->first();
+            if ( ! $this->user ) {
+                return $this->controller->run('404');
+            }
         }
         if ($this->property('unpublished')) {
             $this->publishedOnly = false;
