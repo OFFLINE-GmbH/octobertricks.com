@@ -19,7 +19,7 @@
         {% else %}
             <div class="medium-trick__meta">
                 <div class="medium-trick__author">
-                    by {{ trick.author.username }}
+                    by <a href="/authors/{{trick.author.username}}/tricks">{{ trick.author.username }}</a>
                 </div>
             </div>
             <div class="medium-trick__tags">

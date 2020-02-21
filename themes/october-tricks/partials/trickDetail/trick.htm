@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="trick__meta">
-            by {{ trick.author.username }}, last modified on {{ trick.updated_at.format('F jS, Y') }}
+            by <a href="/authors/{{trick.author.username}}/tricks">{{ trick.author.username }}</a>, last modified on {{ trick.updated_at.format('F jS, Y') }}
         </div>
         <div class="trick__tags">
             {% partial __SELF__ ~ '::tags' tags=trick.tags %}
