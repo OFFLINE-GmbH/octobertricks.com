@@ -6,7 +6,7 @@
         </span>
     </a>
     <a href="{{ 'trick' | page({slug:trick.slug}) }}" class="small-trick__subtitle">
-        by <a class="author" href="/authors/{{trick.author.username}}/tricks">{{ trick.author.username }}</a>
+        by <a class="author" href="{{ 'author-tricks' | page({username: trick.author.username}) }}">{{ trick.author.username }}</a>
     </a>
     <div class="small-trick__tags">
         {% partial 'trickDetail/tags' tags=trick.tags nowrap=true %}
