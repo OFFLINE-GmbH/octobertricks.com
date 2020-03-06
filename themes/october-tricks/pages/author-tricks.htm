@@ -1,0 +1,41 @@
+title = "User Tricks"
+url = "/authors/:username/tricks"
+layout = "default"
+is_hidden = 0
+
+[session]
+security = "user"
+redirect = "account"
+
+[trickList trickListAuthor]
+user = 0
+unpublished = 0
+limit = 10
+username = "{{ :username }}"
+==
+function onStart() {
+    $this['hideSearchbox'] = true;
+}
+==
+<section class="content content--no-sidebar content--pull-up">
+    <div class="box box--padding-1">
+        <h1 class="box__heading">
+            Tricks by {{ trickListAuthor.property('username') }}
+        </h1>
+        <div class="box__subheading">
+            This is a list of all the tricks {{ trickListAuthor.property('username') }} has submitted.
+        </div>
+
+        {% if trickListAuthor.tricks.count() > 0 %}
+            {% component 'trickListAuthor' %}
+        {% else %}
+            <a href="{{ 'trick-form' | page({slug: ''}) }}"
+               class="well">
+                <div class="well__heading">There is nothing to see here</div>
+                <div class="well__cta">
+                    Submit your first trick now
+                </div>
+            </a>
+        {% endif %}
+    </div>
+</section>
