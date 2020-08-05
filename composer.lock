@@ -4,32 +4,35 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a89e01ccb5524907246b6820ed9ccddc",
+    "content-hash": "da3fb16354b6e971a1aa0fc4b2222e5e",
     "packages": [
         {
             "name": "composer/installers",
-            "version": "v1.6.0",
+            "version": "v1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "cfcca6b1b60bc4974324efb5783c13dca6932b5b"
+                "reference": "b93bcf0fa1fccb0b7d176b0967d969691cd74cca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/cfcca6b1b60bc4974324efb5783c13dca6932b5b",
-                "reference": "cfcca6b1b60bc4974324efb5783c13dca6932b5b",
+                "url": "https://api.github.com/repos/composer/installers/zipball/b93bcf0fa1fccb0b7d176b0967d969691cd74cca",
+                "reference": "b93bcf0fa1fccb0b7d176b0967d969691cd74cca",
                 "shasum": ""
             },
             "require": {
-                "composer-plugin-api": "^1.0"
+                "composer-plugin-api": "^1.0 || ^2.0"
             },
             "replace": {
                 "roundcube/plugin-installer": "*",
                 "shama/baton": "*"
             },
             "require-dev": {
-                "composer/composer": "1.0.*@dev",
-                "phpunit/phpunit": "^4.8.36"
+                "composer/composer": "1.6.* || 2.0.*@dev",
+                "composer/semver": "1.0.* || 2.0.*@dev",
+                "phpunit/phpunit": "^4.8.36",
+                "sebastian/comparator": "^1.2.4",
+                "symfony/process": "^2.3"
             },
             "type": "composer-plugin",
             "extra": {
@@ -65,6 +68,7 @@
                 "Kanboard",
                 "Lan Management System",
                 "MODX Evo",
+                "MantisBT",
                 "Mautic",
                 "Maya",
                 "OXID",
@@ -73,6 +77,7 @@
                 "RadPHP",
                 "SMF",
                 "Thelia",
+                "Whmcs",
                 "WolfCMS",
                 "agl",
                 "aimeos",
@@ -95,6 +100,7 @@
                 "installer",
                 "itop",
                 "joomla",
+                "known",
                 "kohana",
                 "laravel",
                 "lavalite",
@@ -117,6 +123,7 @@
                 "shopware",
                 "silverstripe",
                 "sydes",
+                "sylius",
                 "symfony",
                 "typo3",
                 "wordpress",
@@ -124,7 +131,17 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2018-08-27T06:10:37+00:00"
+            "funding": [
+                {
+                    "url": "https://packagist.com",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/composer/composer",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-04-07T06:57:05+00:00"
         },
         {
             "name": "cypresslab/gitelephant",
@@ -1048,6 +1065,7 @@
                     "email": "jakub.onderka@gmail.com"
                 }
             ],
+            "abandoned": "php-parallel-lint/php-console-color",
             "time": "2018-09-29T17:23:10+00:00"
         },
         {
@@ -1094,6 +1112,7 @@
                 }
             ],
             "description": "Highlight PHP code in terminal",
+            "abandoned": "php-parallel-lint/php-console-highlighter",
             "time": "2018-09-29T18:48:56+00:00"
         },
         {
@@ -1485,6 +1504,7 @@
                 "scss",
                 "stylesheet"
             ],
+            "abandoned": "scssphp/scssphp",
             "time": "2018-07-22T01:22:08+00:00"
         },
         {
@@ -1805,6 +1825,7 @@
                 "cron",
                 "schedule"
             ],
+            "abandoned": "dragonmantank/cron-expression",
             "time": "2017-01-23T04:29:33+00:00"
         },
         {
@@ -1918,16 +1939,16 @@
         },
         {
             "name": "october/backend",
-            "version": "v1.0.447",
+            "version": "v1.0.467",
             "source": {
                 "type": "git",
                 "url": "https://github.com/octoberrain/backend.git",
-                "reference": "37b60b34bdef8f7db71e5eebc77acd30809ea4b3"
+                "reference": "19611b5e27769636621c85180c842901552ac6a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/octoberrain/backend/zipball/37b60b34bdef8f7db71e5eebc77acd30809ea4b3",
-                "reference": "37b60b34bdef8f7db71e5eebc77acd30809ea4b3",
+                "url": "https://api.github.com/repos/octoberrain/backend/zipball/19611b5e27769636621c85180c842901552ac6a9",
+                "reference": "19611b5e27769636621c85180c842901552ac6a9",
                 "shasum": ""
             },
             "require": {
@@ -1973,7 +1994,7 @@
                 "october",
                 "october cms"
             ],
-            "time": "2019-01-23T07:30:53+00:00"
+            "time": "2020-06-24T17:33:44+00:00"
         },
         {
             "name": "october/cms",
@@ -1981,12 +2002,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/octoberrain/cms.git",
-                "reference": "ebb40b84937cc106241dae44100abbcc2744da6a"
+                "reference": "daa00574c43fea1dc8492de645abd11cddd9d519"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/octoberrain/cms/zipball/ebb40b84937cc106241dae44100abbcc2744da6a",
-                "reference": "ebb40b84937cc106241dae44100abbcc2744da6a",
+                "url": "https://api.github.com/repos/octoberrain/cms/zipball/daa00574c43fea1dc8492de645abd11cddd9d519",
+                "reference": "daa00574c43fea1dc8492de645abd11cddd9d519",
                 "shasum": ""
             },
             "require": {
@@ -2139,12 +2160,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/octoberrain/system.git",
-                "reference": "f92e8a8f9c455ce5f52b82f68e60c6d2413d5c9e"
+                "reference": "deb0dff9d4744412a8203968b9f6511581224b1c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/octoberrain/system/zipball/f92e8a8f9c455ce5f52b82f68e60c6d2413d5c9e",
-                "reference": "f92e8a8f9c455ce5f52b82f68e60c6d2413d5c9e",
+                "url": "https://api.github.com/repos/octoberrain/system/zipball/deb0dff9d4744412a8203968b9f6511581224b1c",
+                "reference": "deb0dff9d4744412a8203968b9f6511581224b1c",
                 "shasum": ""
             },
             "require": {
@@ -2299,6 +2320,7 @@
                 "php",
                 "stylesheet"
             ],
+            "abandoned": true,
             "time": "2017-03-28T22:19:25+00:00"
         },
         {
@@ -2812,17 +2834,17 @@
             ],
             "authors": [
                 {
+                    "name": "Ben Ramsey",
+                    "email": "ben@benramsey.com",
+                    "homepage": "https://benramsey.com"
+                },
+                {
                     "name": "Marijn Huizendveld",
                     "email": "marijn.huizendveld@gmail.com"
                 },
                 {
                     "name": "Thibaud Fabre",
                     "email": "thibaud@aztech.io"
-                },
-                {
-                    "name": "Ben Ramsey",
-                    "email": "ben@benramsey.com",
-                    "homepage": "https://benramsey.com"
                 }
             ],
             "description": "Formerly rhumsaa/uuid. A PHP 5.4+ library for generating RFC 4122 version 1, 3, 4, and 5 universally unique identifiers (UUID).",
@@ -5456,5 +5478,6 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.0"
-    }
+    },
+    "plugin-api-version": "1.1.0"
 }
