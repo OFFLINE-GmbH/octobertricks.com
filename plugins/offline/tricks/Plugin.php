@@ -46,7 +46,7 @@ class Plugin extends PluginBase
                 $user->addDynamicMethod('getFallbackAvatarAttribute', function () use ($user) {
                     $id = str_slug($user->username);
 
-                    $url = 'https://api.adorable.io/avatars/%d/%s.png';
+                    $url = 'https://api.hello-avatar.com/adorables/%d/%s.png';
 
                     return [
                         sprintf($url, 45, $id),
