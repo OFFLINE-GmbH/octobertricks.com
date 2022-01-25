@@ -4,57 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c354d50c072d3a9e549e1d5b7e43f19f",
+    "content-hash": "6fc0f70ab73847fda5a8967494fac86c",
     "packages": [
-        {
-            "name": "bhaktaraz/php-rss-generator",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/bhaktaraz/php-rss-generator.git",
-                "reference": "53cf11db18d87e65973e6df453fb8c1382e5a3bd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/bhaktaraz/php-rss-generator/zipball/53cf11db18d87e65973e6df453fb8c1382e5a3bd",
-                "reference": "53cf11db18d87e65973e6df453fb8c1382e5a3bd",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Bhaktaraz\\RSSGenerator\\": "Source/Bhaktaraz/RSSGenerator/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Bhaktaraz Bhatta",
-                    "email": "bhattabhakta@gmail.com"
-                }
-            ],
-            "description": "Simple RSS generator library for PHP 5.5 or later.",
-            "homepage": "https://github.com/bhaktaraz/php-rss-generator",
-            "keywords": [
-                "Facebook product feed generator",
-                "feed",
-                "generator",
-                "rss",
-                "writer"
-            ],
-            "support": {
-                "issues": "https://github.com/bhaktaraz/php-rss-generator/issues",
-                "source": "https://github.com/bhaktaraz/php-rss-generator/tree/master"
-            },
-            "time": "2021-03-15T10:59:47+00:00"
-        },
         {
             "name": "composer/installers",
             "version": "v1.12.0",
@@ -2347,22 +2298,21 @@
         },
         {
             "name": "october/backend",
-            "version": "v1.0.474",
+            "version": "v1.1.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/octoberrain/backend.git",
-                "reference": "fbebbb32c4b58dccc7db52f907980ddaac7f3654"
+                "reference": "6c539bebcd189b5c5f7a919faad9d06985499f3b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/octoberrain/backend/zipball/fbebbb32c4b58dccc7db52f907980ddaac7f3654",
-                "reference": "fbebbb32c4b58dccc7db52f907980ddaac7f3654",
+                "url": "https://api.github.com/repos/octoberrain/backend/zipball/6c539bebcd189b5c5f7a919faad9d06985499f3b",
+                "reference": "6c539bebcd189b5c5f7a919faad9d06985499f3b",
                 "shasum": ""
             },
             "require": {
                 "composer/installers": "~1.0",
-                "october/rain": "~1.0.469",
-                "php": ">=7.0"
+                "php": ">=7.2"
             },
             "type": "october-module",
             "extra": {
@@ -2382,17 +2332,13 @@
             "authors": [
                 {
                     "name": "Alexey Bobkov",
-                    "email": "aleksey.bobkov@gmail.com"
+                    "email": "aleksey.bobkov@gmail.com",
+                    "role": "Co-founder"
                 },
                 {
                     "name": "Samuel Georges",
-                    "email": "daftspunky@gmail.com"
-                },
-                {
-                    "name": "Luke Towers",
-                    "email": "octobercms@luketowers.ca",
-                    "homepage": "https://luketowers.ca",
-                    "role": "Maintainer"
+                    "email": "daftspunky@gmail.com",
+                    "role": "Co-founder"
                 }
             ],
             "description": "Backend module for October CMS",
@@ -2403,9 +2349,9 @@
                 "october cms"
             ],
             "support": {
-                "source": "https://github.com/octoberrain/backend/tree/v1.0.474"
+                "source": "https://github.com/octoberrain/backend/tree/v1.1.10"
             },
-            "time": "2021-09-28T00:58:01+00:00"
+            "time": "2021-11-14T22:44:06+00:00"
         },
         {
             "name": "october/cms",
@@ -7148,8 +7094,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "wikimedia/composer-merge-plugin": 20,
-        "bhaktaraz/php-rss-generator": 20
+        "wikimedia/composer-merge-plugin": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
@@ -7159,5 +7104,5 @@
         "ext-openssl": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.2.0"
 }
