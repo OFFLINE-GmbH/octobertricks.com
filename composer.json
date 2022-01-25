@@ -33,10 +33,10 @@
         "php": ">=7.0",
         "ext-mbstring": "*",
         "ext-openssl": "*",
-        "october/rain": "~1.0",
-        "october/system": "~1.0",
-        "october/backend": "~1.0",
-        "october/cms": "~1.0",
+        "october/rain": "1.0.*",
+        "october/system": "1.0.*",
+        "october/backend": "1.0.*",
+        "october/cms": "1.0.*",
         "laravel/framework": "5.5.*",
         "wikimedia/composer-merge-plugin": "dev-master",
         "offline/oc-bootstrapper": "^0.4.5"
@@ -46,13 +46,6 @@
         "phpunit/phpunit": "~5.7",
         "phpunit/phpunit-selenium": "~1.2",
         "meyfa/phpunit-assert-gd": "1.1.0"
-    },
-    "autoload-dev": {
-        "classmap": [
-            "tests/TestCase.php",
-            "tests/UiTestCase.php",
-            "tests/PluginTestCase.php"
-        ]
     },
     "scripts": {
         "post-create-project-cmd": [
