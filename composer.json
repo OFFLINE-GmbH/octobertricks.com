@@ -42,6 +42,7 @@
         "offline/oc-bootstrapper": "^0.4.5"
     },
     "require-dev": {
+        "barryvdh/laravel-ide-helper": "^2.8.0",
         "fzaninotto/faker": "~1.7",
         "phpunit/phpunit": "~5.7",
         "phpunit/phpunit-selenium": "~1.2",

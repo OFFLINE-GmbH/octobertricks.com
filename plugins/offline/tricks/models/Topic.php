@@ -1,28 +1,56 @@
-<?php namespace OFFLINE\Tricks\Models;
+<?php declare(strict_types=1);
+
+namespace OFFLINE\Tricks\Models;
 
 use Cms\Classes\Page;
-use Model;
+use October\Rain\Database\Model;
 use October\Rain\Database\Traits\Sluggable;
 use October\Rain\Database\Traits\Sortable;
 use October\Rain\Database\Traits\Validation;
 
 class Topic extends Model
 {
-    use Validation;
-    use Sortable;
     use Sluggable;
+    use Sortable;
+    use Validation;
 
+    /**
+     * The table associated with this model.
+     * @var string
+     */
     public $table = 'offline_tricks_topics';
-    public $slugs = [
-        'slug' => 'name',
-    ];
+
+    /**
+     * The validation rules for the single attributes.
+     * @var array
+     */
     public $rules = [
         'name' => 'required|unique:offline_tricks_topics,name',
     ];
+
+    /**
+     * Automatically generate unique URL names for the passed attributes.
+     * @var array
+     */
+    public $slugs = [
+        'slug' => 'name',
+    ];
+
+    /**
+     * The hasMany relationships of this model.
+     * @var array
+     */
     public $hasMany = [
         'tricks' => Trick::class,
     ];
 
+    /**
+     * Resolve menu item.
+     * @param mixed $item
+     * @param mixed $url
+     * @param mixed $theme
+     * @return array
+     */
     public static function resolveMenuItem($item, $url, $theme)
     {
         $pageName = 'topic';
@@ -45,4 +73,5 @@ class Topic extends Model
             'items' => $items,
         ];
     }
+    
 }

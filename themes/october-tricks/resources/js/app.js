@@ -1,4 +1,3 @@
-import 'core-js/es6/array'
 
 ready(() => {
     global.body = document.querySelector('body')
