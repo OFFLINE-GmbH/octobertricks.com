@@ -7,6 +7,7 @@ OctoberTricks / Changelog
 - Add: New Image-Upload handler on trick form / easyMDE editor.
 - Update: package.json dependencies.
 - Update: Minor styling issues.
+- Fix: Search box was not visible on non-existing author pages.
 
 ## Version 1.0.0
 - Initial Release
