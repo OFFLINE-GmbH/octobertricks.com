@@ -3,6 +3,7 @@ import 'core-js/es6/array'
 ready(() => {
     global.body = document.querySelector('body')
 
+    require('./modules/avatarForm')
     require('./modules/mobileNavigation')
     require('./modules/tabNavigation')
     require('./modules/voter')

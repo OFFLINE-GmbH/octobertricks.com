@@ -48,6 +48,10 @@ class Trick extends Model
         'tags'   => [Tag::class, 'table' => 'offline_tricks_trick_tag'],
     ];
 
+    public $attachMany = [
+        'content_images'  => \System\Models\File::class
+    ];
+
     public static function ofTheDay()
     {
         $entries      = self::published()->count();

@@ -2,6 +2,8 @@
 
 use Cms\Classes\ComponentBase;
 use DB;
+use Illuminate\Support\Facades\Input;
+use October\Rain\Exception\AjaxException;
 use October\Rain\Exception\ValidationException;
 use October\Rain\Support\Facades\Flash;
 use OFFLINE\Tricks\Models\Proposal;
@@ -9,6 +11,7 @@ use OFFLINE\Tricks\Models\Tag;
 use OFFLINE\Tricks\Models\Topic;
 use OFFLINE\Tricks\Models\Trick;
 use RainLab\User\Facades\Auth;
+use System\Models\File;
 use Validator;
 
 class TrickForm extends ComponentBase
@@ -139,5 +142,21 @@ class TrickForm extends ComponentBase
         $user = Auth::getUser();
 
         return $user && optional($user->groups->pluck('code'))->contains('moderators');
+    }
+
+    public function onUploadImage()
+    {
+        if (!Input::hasFile('image')) {
+            throw new AjaxException('The passed form is invalid.');
+        }
+
+        try {
+            $file = new File();
+            $file->fromPost(request()->file('image'));
+            $file->save();
+            return ['status' => 'success', 'path' => $file->getPath()];
+        } catch (\Exception $e) {
+            throw new AjaxException($e->getMessage());
+        }
     }
 }

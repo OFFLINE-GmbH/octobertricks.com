@@ -48,6 +48,15 @@ for i in (0..20)
         + .column
             margin-top 2rem
 
+
+.three.columns .column--2
+    lost-column 2 / 3 3 2rem
+    +below('s')
+        lost-column 1 / 1
+        + .column
+            margin-top 2rem
+    
+
 .four.columns .column
     lost-column 1 / 4 3 2rem
     +below('m')

@@ -18,12 +18,23 @@
 
 {% else %}
 
-    <div class="box box--padding-1 box--centered box--narrow">
-        <h1 class="box__heading">Your account</h1>
-        <p class="box__subheading">Edit your account details</p>
-        {% partial __SELF__ ~ '::activation_check' %}
-        {% partial __SELF__ ~ '::update' %}
-        {% partial __SELF__ ~ '::deactivate_link' %}
+    <div class="three columns">
+        <div class="column column--2">
+            <div class="box box--padding-1">
+                <h1 class="box__heading">Your account</h1>
+                <p class="box__subheading">Edit your account details</p>
+                {% partial __SELF__ ~ '::activation_check' %}
+                {% partial __SELF__ ~ '::update' %}
+                {% partial __SELF__ ~ '::deactivate_link' %}
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="box box--narrow">
+                <h1 class="box__heading">Update your Avatar</h1>
+                {% partial __SELF__ ~ '::update_avatar' %}
+            </div>
+        </div>
     </div>
 
 {% endif %}

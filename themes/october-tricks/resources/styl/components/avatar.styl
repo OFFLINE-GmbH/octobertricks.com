@@ -1,0 +1,86 @@
+@keyframes spin
+    from
+        transform rotate(0deg)
+    to
+        transform rotate(359deg)
+
+.avatar-form
+    margin 0 -2rem
+    display flex
+    flex-direction column
+    justify-content center
+    align-items center
+
+    button
+        width 0
+        height 0
+        visibility hidden
+
+.avatar-field
+    width 100%
+    display flex
+    gap 2rem
+    flex-direction column
+    justify-content center
+    align-items center
+
+.avatar-preview
+    flex 0 0 80px
+    width 80px
+    height 80px
+    position relative
+    margin-bottom 2px
+    border-radius 50%
+
+    img
+        width 100%
+        height 100%
+        object-fit cover
+        border-radius 50%
+    
+    .avatar-loading
+        width 88px
+        height 88px
+        inset -4px
+        display flex
+        position absolute
+        align-items center
+        justify-content center
+        background-color rgba(0, 0, 0, 0.15)
+        backdrop-filter blur(5px)
+        border-radius 50%
+        transform scale(0)
+        transition transform 300ms ease-in-out
+
+        &.active
+            transform scale(100%)
+
+        &.active svg
+            animation 2s linear 0ms infinite spin
+
+.avatar-input 
+    width 100%;
+    color #616e7c
+    cursor pointer
+    display flex
+    border-width 1px 0
+    border-style solid
+    border-color grey-light
+    background-color grey-lightest
+    transition background-color 300ms ease-in-out, border-color 300ms ease-in-out, color 300ms ease-in-out
+
+    &.in-focus
+        color primary-darker
+        border-color primary-light
+        background-color primary-lightest
+
+    input
+        width 0
+        height 0
+        visibility hidden
+
+.input-description
+    width 100%
+    padding 15px
+    font-weight 400
+    text-align center

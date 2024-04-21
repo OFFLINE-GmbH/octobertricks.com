@@ -15,14 +15,17 @@
     box-shadow 0 2px 2px rgba(3, 27, 78, .3)
     text-shadow none
 
-    &:focus,
-    &:hover
+    &:disabled
+        cursor: not-allowed
+
+    &:not(:disabled):focus,
+    &:not(:disabled):hover
         background grey-dark
 
     &--bordered
         border 1px solid rgba(0, 0, 0, .5)
 
-        &:hover
+        &:not(:disabled):hover
             border-color rgba(0, 0, 0, .6)
             background rgba(0, 0, 0, .025)
 
@@ -32,9 +35,14 @@
         color #fff
         box-shadow 0 2px 2px rgba(3, 27, 78, .3)
 
-        &:focus,
-        &:hover
+        &:not(:disabled):focus,
+        &:not(:disabled):hover
             background #F9703E
+
+        &:disabled
+            background grey-dark
+            border-color grey-dark
+            color gray-lighter
 
     &--block
         display block
@@ -55,7 +63,8 @@
         box-shadow none
         background grey-lightest
         color grey-darkest
-        &:hover
+
+        &:not(:disabled):hover
             background primary-lightest
             color primary-darkest
 
@@ -67,8 +76,9 @@
         padding-right 2rem
         box-shadow none
         color grey-dark
-        &:hover,
-        &:focus
+
+        &:not(:disabled):hover,
+        &:not(:disabled):focus
             color primary
             background none
             box-shadow none
@@ -79,6 +89,6 @@
         &.btn--bordered
             border-color rgba(255, 255, 255, .5)
 
-            &:hover
+            &:not(:disabled):hover
                 border-color rgba(255, 255, 255, .6)
                 background rgba(255, 255, 255, .025)

@@ -71,6 +71,7 @@ gulp.task('styles', done => {
                         whitelistPatternsChildren: [/^\.content/, /trick-content/, /gdpr/, /table/],
                         content: [
                             `${basepath}/themes/**/*.htm`,
+                            `${basepath}/themes/**/*.js`,
                             `${basepath}/plugins/**/*.htm`,
                             `${basepath}/storage/cms/twig/**/*.php`,
                         ]
