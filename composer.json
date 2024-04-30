@@ -2,7 +2,13 @@
     "name": "october/october",
     "description": "October CMS",
     "homepage": "https://octobercms.com",
-    "keywords": ["october", "cms", "octobercms", "laravel"],
+    "type": "project",
+    "keywords": [
+        "october",
+        "cms",
+        "octobercms",
+        "laravel"
+    ],
     "license": "MIT",
     "authors": [
         {
@@ -14,65 +20,58 @@
             "name": "Samuel Georges",
             "email": "daftspunky@gmail.com",
             "role": "Co-founder"
-        },
-        {
-            "name": "Luke Towers",
-            "email": "octobercms@luketowers.ca",
-            "homepage": "https://luketowers.ca",
-            "role": "Maintainer"
         }
     ],
     "support": {
+        "paid": "https://octobercms.com/premium-support",
         "issues": "https://github.com/octobercms/october/issues",
         "forum": "https://octobercms.com/forum/",
         "docs": "https://octobercms.com/docs/",
-        "irc": "irc://irc.freenode.net/october",
         "source": "https://github.com/octobercms/october"
     },
     "require": {
-        "php": ">=7.0",
-        "ext-mbstring": "*",
-        "ext-openssl": "*",
+        "php": ">=7.0.8",
         "october/rain": "1.0.*",
         "october/system": "1.0.*",
         "october/backend": "1.0.*",
         "october/cms": "1.0.*",
-        "laravel/framework": "5.5.*",
-        "wikimedia/composer-merge-plugin": "dev-master",
-        "offline/oc-bootstrapper": "^0.4.5"
+        "laravel/framework": "~5.5.40",
+        "offline/oc-bootstrapper": "^0.9.8"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.7",
-        "phpunit/phpunit": "~5.7",
+        "phpunit/phpunit": "~6.5",
         "phpunit/phpunit-selenium": "~1.2",
-        "meyfa/phpunit-assert-gd": "1.1.0"
+        "meyfa/phpunit-assert-gd": "1.1.0",
+        "squizlabs/php_codesniffer": "3.*",
+        "php-parallel-lint/php-parallel-lint": "^1.0"
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/concerns/InteractsWithAuthentication.php",
+            "tests/fixtures/backend/models/UserFixture.php",
+            "tests/TestCase.php",
+            "tests/UiTestCase.php",
+            "tests/PluginTestCase.php"
+        ]
     },
     "scripts": {
         "post-create-project-cmd": [
-            "php artisan key:generate"
+            "php artisan key:generate",
+            "php artisan package:discover"
         ],
         "post-update-cmd": [
-            "php artisan october:util set build"
+            "php artisan october:util set build",
+            "php artisan package:discover"
         ]
     },
     "config": {
         "preferred-install": "dist",
         "allow-plugins": {
-            "kylekatarnls/update-helper": true,
             "composer/installers": true,
-            "wikimedia/composer-merge-plugin": true
+            "kylekatarnls/update-helper": true
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "extra": {
-        "merge-plugin": {
-            "include": [
-                "plugins/*/*/composer.json"
-            ],
-            "recurse": true,
-            "replace": false,
-            "merge-dev": false
-        }
-    }
+    "prefer-stable": true
 }
