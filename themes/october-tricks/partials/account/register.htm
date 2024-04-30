@@ -13,6 +13,16 @@
     {% endif %}
 
     <div class="form-group">
+        <label for="registerEmail">E-mail</label>
+        <input
+            name="email"
+            type="email"
+            class="form-control"
+            id="registerEmail"/>
+        <div data-validate-for="email"></div>
+    </div>
+
+    <div class="form-group">
         <label for="registerPassword">Password</label>
         <input
                 name="password"
@@ -20,16 +30,6 @@
                 class="form-control"
                 id="registerPassword"/>
         <div data-validate-for="password"></div>
-    </div>
-
-    <div class="form-group">
-        <label for="registerEmail">E-mail</label>
-        <input
-                name="email"
-                type="email"
-                class="form-control"
-                id="registerEmail"/>
-        <div data-validate-for="email"></div>
     </div>
 
     <div class="form-group">
