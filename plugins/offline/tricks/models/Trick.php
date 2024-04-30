@@ -1,8 +1,9 @@
-<?php namespace OFFLINE\Tricks\Models;
+<?php declare(strict_types=1);
 
-use Cache;
+namespace OFFLINE\Tricks\Models;
+
 use Cms\Classes\Page;
-use Model;
+use October\Rain\Database\Model;
 use October\Rain\Database\Traits\Sluggable;
 use October\Rain\Database\Traits\Validation;
 use October\Rain\Parse\Markdown;
@@ -10,16 +11,21 @@ use October\Rain\Support\Facades\Html;
 use RainLab\User\Models\User;
 use Str;
 
-
 class Trick extends Model
 {
-    use Validation;
     use Sluggable;
+    use Validation;
 
+    /**
+     * The table associated with this model.
+     * @var string
+     */
     public $table = 'offline_tricks_tricks';
-    public $slugs = [
-        'slug' => 'title',
-    ];
+
+    /**
+     * The validation rules for the single attributes.
+     * @var array
+     */
     public $rules = [
         'title'              => 'required',
         'content'            => 'required',
@@ -27,6 +33,19 @@ class Trick extends Model
         'references.*.label' => 'sometimes|required',
         'references.*.url'   => 'sometimes|required|url',
     ];
+
+    /**
+     * Automatically generate unique URL names for the passed attributes.
+     * @var array
+     */
+    public $slugs = [
+        'slug' => 'title',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     * @var array
+     */
     public $casts = [
         'revision'   => 'integer',
         'votes_up'   => 'integer',
@@ -34,21 +53,62 @@ class Trick extends Model
         'votes'      => 'integer',
         'pageviews'  => 'integer',
     ];
-    public $dates = ['published_at'];
-    public $jsonable = ['references'];
-    public $hasMany = [
-        'comments'  => Comment::class,
-        'proposals' => Proposal::class,
+
+    /**
+     * The attributes that should be cast as dates.
+     * @var array
+     */
+    public $dates = [
+        'published_at'
     ];
+
+    /**
+     * Attribute names that are json encoded and decoded from the database.
+     * @var array 
+     */
+    public $jsonable = [
+        'references'
+    ];
+
+    /**
+     * The attachMany relationships of this model.
+     * @var array
+     */
+    public $attachMany = [
+        'content_images'  => \System\Models\File::class
+    ];
+
+    /**
+     * The belongsTo relationships of this model.
+     * @var array
+     */
     public $belongsTo = [
         'author' => [User::class, 'key' => 'user_id'],
     ];
+
+    /**
+     * The belongsToMany relationships of this model.
+     * @var array
+     */
     public $belongsToMany = [
         'topics' => [Topic::class, 'table' => 'offline_tricks_trick_topic'],
         'tags'   => [Tag::class, 'table' => 'offline_tricks_trick_tag'],
     ];
 
-    public static function ofTheDay()
+    /**
+     * The hasMany relationships of this model.
+     * @var array
+     */
+    public $hasMany = [
+        'comments'  => Comment::class,
+        'proposals' => Proposal::class,
+    ];
+
+    /**
+     * Get Trick of the day.
+     * @return Trick|null
+     */
+    static public function ofTheDay()
     {
         $entries      = self::published()->count();
         $dayOfTheYear = (int)date('z');
@@ -56,17 +116,29 @@ class Trick extends Model
         return self::published()->skip($dayOfTheYear % $entries)->orderBy('created_at', 'asc')->first();
     }
 
+    /**
+     * Hook before model is created.
+     * @return void
+     */
     public function beforeCreate()
     {
         $this->votes     = $this->votes_up = $this->votes_down = 0;
         $this->pageviews = 0;
     }
 
+    /**
+     * Hook before model is saved.
+     * @return void
+     */
     public function beforeSave()
     {
         $this->revision++;
     }
 
+    /**
+     * Published query scope.
+     * @return void
+     */
     public function scopePublished($query)
     {
         return $query->where(function ($q) {
@@ -74,11 +146,19 @@ class Trick extends Model
         });
     }
 
+    /**
+     * Get is_published attribute.
+     * @return boolean
+     */
     public function getIsPublishedAttribute()
     {
         return $this->published_at !== null && $this->published_at->lt(now());
     }
 
+    /**
+     * Get excerpt attribute.
+     * @return string
+     */
     public function getExcerptAttribute()
     {
         return Str::words(Html::strip(
@@ -86,6 +166,10 @@ class Trick extends Model
         ), 40);
     }
 
+    /**
+     * Get excerpt_without_code attribute.
+     * @return string
+     */
     public function getExcerptWithoutCodeAttribute()
     {
         $noCode = preg_replace('/```.*(\n[^```]+)+```/', '', $this->content);
@@ -95,16 +179,27 @@ class Trick extends Model
         ), 40);
     }
 
+    /**
+     * Get clean_content attribute.
+     * @return string
+     */
     public function getCleanContentAttribute()
     {
         $content = (new Markdown())->parse($this->content);
 
         return strip_tags(
             Html::clean($content),
-            '<p><a><code><pre><i><b><strong><h1><h2><h3><h4><h5><h6><blockquote><em><ul><li><ol><table><tr><td><th><tbody>'
+            '<img><p><a><code><pre><i><b><strong><h1><h2><h3><h4><h5><h6><blockquote><em><ul><li><ol><table><tr><td><th><tbody>'
         );
     }
 
+    /**
+     * Resolve menu item.
+     * @param mixed $item
+     * @param mixed $url
+     * @param mixed $theme
+     * @return array
+     */
     public static function resolveMenuItem($item, $url, $theme)
     {
         $pageName = 'trick';

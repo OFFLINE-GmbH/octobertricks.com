@@ -1,27 +1,68 @@
-<?php namespace OFFLINE\Tricks\Models;
+<?php declare(strict_types=1);
+
+namespace OFFLINE\Tricks\Models;
 
 use Cms\Classes\Page;
-use Model;
+use October\Rain\Database\Model;
 use October\Rain\Database\Traits\Sluggable;
 use October\Rain\Database\Traits\Validation;
 
 class Tag extends Model
 {
-    use Validation;
     use Sluggable;
+    use Validation;
 
+    /**
+     * The table associated with this model.
+     * @var string
+     */
     public $table = 'offline_tricks_tags';
-    public $slugs = [
-        'slug' => 'name',
-    ];
+
+    /**
+     * The validation rules for the single attributes.
+     * @var array
+     */
     public $rules = [
         'name' => 'required|unique:offline_tricks_tags,name',
     ];
-    public $fillable = ['name'];
-    public $hasMany = [
-        'tricks' => Trick::class,
+    
+    /**
+     * The attributes that are mass assignable.
+     * @var array<string>
+     */
+    public $fillable = [
+        'name'
     ];
 
+    /**
+     * Automatically generate unique URL names for the passed attributes.
+     * @var array
+     */
+    public $slugs = [
+        'slug' => 'name',
+    ];
+
+    /**
+     * The hasManyThrough relationships of this model.
+     * @var array
+     */
+    public $hasManyThrough = [
+        'tricks' => [
+            Trick::class,
+            'key'        => 'tag_id',
+            'through'    => TrickTag::class,
+            'throughKey' => 'id',
+            'otherKey'   => 'id'
+        ],
+    ];
+
+    /**
+     * Resolve menu item.
+     * @param mixed $item
+     * @param mixed $url
+     * @param mixed $theme
+     * @return array
+     */
     public static function resolveMenuItem($item, $url, $theme)
     {
         $pageName = 'tag';
@@ -44,4 +85,5 @@ class Tag extends Model
             'items' => $items,
         ];
     }
+    
 }

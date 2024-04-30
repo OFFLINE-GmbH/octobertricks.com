@@ -179,9 +179,41 @@
             Repeater.init();
 
             var easyMDE = new EasyMDE({
-                showIcons: ['strikethrough', 'code'],
+                showIcons: ['strikethrough', 'code', 'upload-image'],
                 hideIcons: [],
                 element: document.querySelector('#trick_content'),
+                toolbar: [
+                    "bold", "italic", "strikethrough", "heading", 
+                    "|", 
+                    "code", "quote", "unordered-list", "ordered-list",
+                    "|", 
+                    "link", "image", "upload-image",
+                    "|", 
+                    "preview", "side-by-side", "fullscreen",
+                    "|", 
+                    "guide"
+                ],
+                uploadImage: true,
+                imageUploadFunction: (file, resolve, reject) => {
+                    jQuery(this).request('onUploadImage', {
+                        data: {
+                            'image': file
+                        },
+                        files: true,
+                        success: function (data) {
+                            if (typeof data === 'object' && (data.status || '') === 'success') {
+                                resolve(data.path);
+                            } else {
+                                reject('An unjnown error is occured.');
+                            }
+                        },
+                        error: function () {
+                        console.log(this.responseJSON);
+                            let message = (this.responseJSON || {}).result || 'An unknown error is occured';
+                            reject(message);
+                        }
+                    });
+                },
                 renderingConfig: {
                     singleLineBreaks: false,
                     codeSyntaxHighlighting: true,

@@ -25,7 +25,7 @@ themes/**/assets/*.map
 themes/**/node_modules
 !plugins
 
-
+!_ide_helper.php
 !plugins/offline
 !plugins/offline/tricks
 !plugins/offline/tricks/**

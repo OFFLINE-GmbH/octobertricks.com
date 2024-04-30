@@ -1,19 +1,19 @@
 {
-  "curly": true,
-  "eqeqeq": true,
-  "esversion": 6,
-  "latedef": true,
-  "newcap": true,
-  "noarg": true,
-  "sub": true,
-  "undef": true,
-  "unused": true,
-  "boss": true,
-  "eqnull": true,
-  "browser": true,
-  "asi": true,
-  "predef": [
-    "__dirname"
-  ]
+    "curly": true,
+    "eqeqeq": true,
+    "esversion": 6,
+    "latedef": true,
+    "newcap": true,
+    "noarg": true,
+    "sub": true,
+    "undef": true,
+    "unused": true,
+    "boss": true,
+    "eqnull": true,
+    "browser": true,
+    "asi": true,
+    "predef": [
+        "__dirname"
+    ]
 }
 

@@ -39,6 +39,7 @@
         "offline/oc-bootstrapper": "^0.9.8"
     },
     "require-dev": {
+        "barryvdh/laravel-ide-helper": "^2.8.0",
         "fzaninotto/faker": "~1.7",
         "phpunit/phpunit": "~6.5",
         "phpunit/phpunit-selenium": "~1.2",
@@ -69,7 +70,9 @@
         "preferred-install": "dist",
         "allow-plugins": {
             "composer/installers": true,
-            "kylekatarnls/update-helper": true
+            "kylekatarnls/update-helper": true,
+            "php-http/discovery": true,
+            "wikimedia/composer-merge-plugin": true
         }
     },
     "minimum-stability": "dev",

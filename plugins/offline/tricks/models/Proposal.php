@@ -1,9 +1,9 @@
-<?php namespace OFFLINE\Tricks\Models;
+<?php declare(strict_types=1);
+
+namespace OFFLINE\Tricks\Models;
 
 use DB;
 use RainLab\User\Models\User;
-use Str;
-
 
 class Proposal extends Trick
 {
@@ -11,22 +11,49 @@ class Proposal extends Trick
     const STATUS_ACCEPTED = 1;
     const STATUS_DECLINED = 2;
 
+    /**
+     * The table associated with this model.
+     * @var string
+     */
     public $table = 'offline_tricks_proposals';
+
+    /**
+     * The attributes that should be cast as dates.
+     * @var array
+     */
     public $dates = [];
+
+    /**
+     * The belongsTo relationships of this model.
+     * @var array
+     */
     public $belongsTo = [
         'author' => [User::class, 'key' => 'user_id'],
         'trick'  => Trick::class,
     ];
+
+    /**
+     * The belongsToMany relationships of this model.
+     * @var array
+     */
     public $belongsToMany = [
         'topics' => [Topic::class, 'table' => 'offline_tricks_proposal_topic'],
         'tags'   => [Tag::class, 'table' => 'offline_tricks_proposal_tag'],
     ];
-
+    
+    /**
+     * Hook before model is created.
+     * @return void
+     */
     public function beforeCreate()
     {
         $this->status = self::STATUS_PENDING;
     }
 
+    /**
+     * Hook before model is saved.
+     * @return void
+     */
     public function beforeSave()
     {
         if ($this->wasAccepted()) {
@@ -41,6 +68,10 @@ class Proposal extends Trick
         }
     }
 
+    /**
+     * Get available status options.
+     * @return array
+     */
     public function getStatusOptions()
     {
         return [

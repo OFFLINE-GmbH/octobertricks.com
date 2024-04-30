@@ -20,6 +20,8 @@ const cssWhitelist = [
     'CodeMirror',
 ]
 // =====================================================================
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import gulp from 'gulp'
 import stylus from 'gulp-stylus'
 import poststylus from 'poststylus'
@@ -37,6 +39,9 @@ import cssnano from 'gulp-cssnano'
 import purgecss from '@fullhuman/postcss-purgecss'
 import autoprefixer from 'autoprefixer'
 import { create } from 'browser-sync'
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const isProd = util.env.production
 const basepath = __dirname + '/../../'
@@ -57,20 +62,14 @@ gulp.task('styles', done => {
                 poststylus([
                     'postcss-normalize.css',
                     'lost',
-                    autoprefixer({
-                        browsers: [
-                            'last 3 versions',
-                            'safari >= 8',
-                            'ie >= 11',
-                            'ios 7',
-                        ]
-                    }),
+                    autoprefixer(),
                     purgecss({
                         whitelist: cssWhitelist,
                         whitelistPatterns: [/^\.content/, /pre/, /code/, /data-validate-for/, /gdpr/, /blockquote/, /table/],
                         whitelistPatternsChildren: [/^\.content/, /trick-content/, /gdpr/, /table/],
                         content: [
                             `${basepath}/themes/**/*.htm`,
+                            `${basepath}/themes/**/*.js`,
                             `${basepath}/plugins/**/*.htm`,
                             `${basepath}/storage/cms/twig/**/*.php`,
                         ]
@@ -88,7 +87,17 @@ gulp.task('styles', done => {
 gulp.task('scripts', function (done) {
     const steps = [
         browserify(`${paths.jsSource}/app.js`)
-            .transform(babelify, {presets: [['env', {useBuiltIns: 'entry'}]]})
+            .transform(babelify, {
+                presets: [
+                    [
+                        '@babel/env', 
+                        {
+                            corejs: '3.0',
+                            useBuiltIns: 'entry',
+                        }
+                    ]
+                ]
+            })
             .bundle(),
         source('app.js'),
         gulpif(isProd, streamify(uglify())),
